@@ -1,0 +1,37 @@
+import Link from "next/link";
+import { Container } from "./Container";
+import { LinkButton } from "../ui/Button";
+import { NAV_ITEMS } from "@/lib/mock";
+
+export function Header() {
+  return (
+    <header className="border-b border-border-700 bg-bg-900">
+      <Container>
+        <div className="flex h-16 items-center justify-between gap-6">
+          <div className="flex items-center gap-6">
+            <Link href="/" className="text-sm font-semibold tracking-wide text-text-100">
+              EcoVeraZ
+            </Link>
+
+            <nav className="hidden md:flex items-center gap-4">
+              {NAV_ITEMS.map((item) => (
+                <Link key={item.href} href={item.href} className="text-sm text-text-300 hover:text-text-100 transition-colors">
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <LinkButton href="/contact" variant="secondary">
+              Talk to an Expert
+            </LinkButton>
+            <LinkButton href="/contact" variant="primary">
+              Request Demo
+            </LinkButton>
+          </div>
+        </div>
+      </Container>
+    </header>
+  );
+}

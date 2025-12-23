@@ -1,0 +1,46 @@
+:root {
+  /* Backgrounds */
+  --evz-bg-900: #0B0F14;
+  --evz-bg-850: #0E141B;
+  --evz-bg-800: #111827;
+  --evz-bg-750: #151E2A;
+
+  /* Borders */
+  --evz-border-700: #1F2937;
+  --evz-border-650: #243041;
+
+  /* Text */
+  --evz-text-100: #E5E7EB;
+  --evz-text-200: #CBD5E1;
+  --evz-text-300: #94A3B8;
+  --evz-text-400: #64748B;
+
+  /* Accent */
+  --evz-accent-500: #3B82F6;
+  --evz-accent-400: #60A5FA;
+  --evz-accent-600: #2563EB;
+
+  /* Status */
+  --evz-status-green: #22C55E;
+  --evz-status-amber: #F59E0B;
+  --evz-status-red: #EF4444;
+  --evz-status-neutral: #64748B;
+
+  /* Radius */
+  --evz-radius-sm: 6px;
+  --evz-radius-md: 10px;
+  --evz-radius-lg: 14px;
+
+  /* Elevation */
+  --evz-shadow-1: 0 1px 2px rgba(0,0,0,0.4);
+  --evz-shadow-2: 0 4px 12px rgba(0,0,0,0.45);
+
+  /* Fonts */
+  --evz-font-sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --evz-font-mono: JetBrains Mono, SFMono-Regular, Menlo, monospace;
+
+  /* Chart */
+  --evz-chart-grid: #1F2937;
+  --evz-chart-axis: #475569;
+  --evz-chart-label: #94A3B8;
+}
