@@ -125,13 +125,15 @@ export default function CompliancePage() {
               measurements into traceable records and review-ready outputs.
             </div>
 
-            <div className="mt-3 text-sm text-text-300 leading-relaxed">
+            {/* Mobile executive rule: demote disclaimer on mobile only */}
+            <div className="mt-3 text-xs text-text-400 md:text-sm md:text-text-300 leading-relaxed">
               Alignment is expressed through evidence handling and outputs — not claims. EcoVeraZ does
               not certify, approve, score, or determine compliance outcomes. Interpretation and
               conclusions remain with external reviewers (audit, risk, regulators).
             </div>
 
-            <div className="mt-6 flex items-center gap-2">
+            {/* Mobile executive rule: more breathing room + stack on mobile */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2">
               <LinkButton href="/trust-core" variant="primary">
                 Trust Core
               </LinkButton>
@@ -207,7 +209,8 @@ export default function CompliancePage() {
                 subtitle="EcoVeraZ treats operational measurements as records that must remain inspectable."
                 right={<Pill>NON-REGENERATIVE</Pill>}
               />
-              <div className="mt-2 space-y-3">
+              {/* Mobile executive rule: hide dense checklist on mobile */}
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem
                   title="Preservation posture"
                   body="Evidence artifacts are preserved as review objects; results are not re-created ad hoc for different audiences."
@@ -221,6 +224,15 @@ export default function CompliancePage() {
                   body="Evidence packs are produced using controlled, repeatable generation to support reproducibility in review contexts."
                 />
               </div>
+
+              {/* Mobile summary */}
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Posture" value="PRESERVED" note="non-regenerative handling" mono />
+                  <MetricTile label="Windows" value="DEFINED" note="time-bounded measurement" mono />
+                  <MetricTile label="Artifacts" value="DETERMINISTIC" note="repeatable generation" mono />
+                </div>
+              </div>
             </Card>
 
             <Card>
@@ -229,7 +241,8 @@ export default function CompliancePage() {
                 subtitle="Reviewers can verify linkage without relying on internal trust assumptions."
                 right={<Pill>RECEIPTS</Pill>}
               />
-              <div className="mt-2 space-y-3">
+              {/* Mobile executive rule: hide dense checklist on mobile */}
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem
                   title="Reproducible certificates"
                   body="Certificates are tied to preserved evidence references and can be validated against those references."
@@ -242,6 +255,15 @@ export default function CompliancePage() {
                   title="Boundary discipline"
                   body="Public and shared views expose artifacts and posture signals, not proprietary internals or algorithms."
                 />
+              </div>
+
+              {/* Mobile summary */}
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Certificates" value="REPRODUCIBLE" note="tied to evidence references" mono />
+                  <MetricTile label="Verification" value="RECEIPT-BASED" note="independent checking" mono />
+                  <MetricTile label="Boundary" value="CONTROLLED" note="no proprietary internals" mono />
+                </div>
               </div>
             </Card>
           </div>
@@ -290,7 +312,8 @@ export default function CompliancePage() {
                 subtitle="Who owns interpretation and decisions."
                 right={<Pill tone="warn">GUARDRAILS</Pill>}
               />
-              <div className="mt-2 space-y-3">
+              {/* Mobile executive rule: hide dense checklist on mobile */}
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem
                   title="EcoVeraZ scope"
                   body="Capture, normalize, trace, package, and expose evidence artifacts and review posture signals."
@@ -307,6 +330,15 @@ export default function CompliancePage() {
                   title="Disclosure boundary"
                   body="Public views expose artifacts and posture, not algorithms, internals, or proprietary schemas."
                 />
+              </div>
+
+              {/* Mobile summary */}
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="EcoVeraZ scope" value="EVIDENCE" note="capture → package → expose" mono />
+                  <MetricTile label="Reviewer scope" value="EXTERNAL" note="interpret + decide" mono />
+                  <MetricTile label="Disclosure" value="CONTROLLED" note="no internals exposed" mono />
+                </div>
               </div>
             </Card>
           </div>
@@ -403,7 +435,8 @@ export default function CompliancePage() {
                 subtitle="Operational context preserved across transformations."
                 right={<Pill>TRACEABLE</Pill>}
               />
-              <div className="space-y-3">
+              {/* Mobile executive rule: hide dense checklist on mobile */}
+              <div className="space-y-3 hidden md:block">
                 <ChecklistItem
                   title="Evidence lineage"
                   body="Outputs can be traced to operational source context and time windows."
@@ -413,6 +446,14 @@ export default function CompliancePage() {
                   body="Aggregation is handled as a governed step, not an opaque calculation."
                 />
               </div>
+
+              {/* Mobile summary */}
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Lineage" value="TRACEABLE" note="source + window + transforms" mono />
+                  <MetricTile label="Transforms" value="GOVERNED" note="not opaque calculations" mono />
+                </div>
+              </div>
             </Card>
 
             <Card>
@@ -421,7 +462,7 @@ export default function CompliancePage() {
                 subtitle="Review surfaces that indicate continuity and integrity."
                 right={<Pill>VERIFIABLE</Pill>}
               />
-              <div className="space-y-3">
+              <div className="space-y-3 hidden md:block">
                 <ChecklistItem
                   title="Continuity posture"
                   body="Coverage and continuity windows can be inspected for gaps."
@@ -431,6 +472,13 @@ export default function CompliancePage() {
                   body="Consistency checks are available where operationally meaningful."
                 />
               </div>
+
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Continuity" value="INSPECTABLE" note="gaps visible in window" mono />
+                  <MetricTile label="Integrity" value="AVAILABLE" note="checks where meaningful" mono />
+                </div>
+              </div>
             </Card>
 
             <Card>
@@ -439,7 +487,7 @@ export default function CompliancePage() {
                 subtitle="Artifacts structured for oversight, audit, and reporting."
                 right={<Pill>ARTIFACT-BASED</Pill>}
               />
-              <div className="space-y-3">
+              <div className="space-y-3 hidden md:block">
                 <ChecklistItem
                   title="Structured outputs"
                   body="Artifacts are produced in formats suited for review contexts."
@@ -448,6 +496,13 @@ export default function CompliancePage() {
                   title="Controlled distribution"
                   body="Outputs are shareable without exposing internal schemas or logic."
                 />
+              </div>
+
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Outputs" value="STRUCTURED" note="review-friendly formats" mono />
+                  <MetricTile label="Distribution" value="CONTROLLED" note="no internals exposed" mono />
+                </div>
               </div>
             </Card>
           </div>
@@ -463,28 +518,49 @@ export default function CompliancePage() {
           <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             <Card>
               <CardHeader title="1) Inspect posture" subtitle="Is evidence review-ready?" right={<Pill>RRI</Pill>} />
-              <div className="mt-2 space-y-3">
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem title="Continuity" body="Are there gaps in the declared window?" />
                 <ChecklistItem title="Integrity" body="Are checks enabled and consistent?" />
                 <ChecklistItem title="Boundary" body="Is disclosure controlled for the context?" />
+              </div>
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Continuity" value="CHECK" note="gaps visible" mono />
+                  <MetricTile label="Integrity" value="CHECK" note="checks enabled" mono />
+                  <MetricTile label="Boundary" value="CHECK" note="disclosure controlled" mono />
+                </div>
               </div>
             </Card>
 
             <Card>
               <CardHeader title="2) Review artifacts" subtitle="Open evidence packs and reports." right={<Pill>PACKS</Pill>} />
-              <div className="mt-2 space-y-3">
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem title="Artifacts" body="Use structured outputs (CSV/JSON/report) with references." />
                 <ChecklistItem title="Lineage" body="Trace artifacts to sources, windows, and transforms." />
                 <ChecklistItem title="Exceptions" body="Read exceptions and operator notes where present." />
+              </div>
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Artifacts" value="OPEN" note="CSV/JSON/report" mono />
+                  <MetricTile label="Lineage" value="TRACE" note="sources + windows" mono />
+                  <MetricTile label="Exceptions" value="READ" note="notes preserved" mono />
+                </div>
               </div>
             </Card>
 
             <Card>
               <CardHeader title="3) Conclude externally" subtitle="Apply the rulebook outside EcoVeraZ." right={<Pill tone="warn">EXTERNAL</Pill>} />
-              <div className="mt-2 space-y-3">
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem title="Standards" body="Reviewer applies jurisdictional standards and thresholds." />
                 <ChecklistItem title="Judgement" body="Reviewer determines compliance, not the platform." />
                 <ChecklistItem title="Record" body="EcoVeraZ preserves what was reviewed and referenced." />
+              </div>
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Standards" value="APPLIED" note="jurisdictional rules" mono />
+                  <MetricTile label="Decision" value="EXTERNAL" note="reviewer owns outcome" mono />
+                  <MetricTile label="Record" value="PRESERVED" note="what was reviewed" mono />
+                </div>
               </div>
             </Card>
           </div>
@@ -505,7 +581,8 @@ export default function CompliancePage() {
         subtitle="Representative operational signal and the verification posture used in review contexts."
       >
         <Grid>
-          <div className="md:col-span-8">
+          {/* Desktop/Tablet chart: hide on mobile (executive summary rule) */}
+          <div className="hidden md:block md:col-span-8">
             <ChartCard
               title="Operational continuity signal (example)"
               subtitle="Representative signal for continuity review."
@@ -518,6 +595,22 @@ export default function CompliancePage() {
                 thresholdHigh={80}
               />
             </ChartCard>
+          </div>
+
+          {/* Mobile summary card instead of chart */}
+          <div className="md:hidden">
+            <Card>
+              <CardHeader
+                title="Operational continuity (summary)"
+                subtitle="Executive view — full trend available on tablet/desktop."
+                right={<Pill>24H</Pill>}
+              />
+              <div className="grid grid-cols-1 gap-3">
+                <MetricTile label="Continuity" value="OK" note="window coverage check" mono />
+                <MetricTile label="Integrity checks" value="ENABLED" note="consistency validation" mono />
+                <MetricTile label="Output readiness" value="READY" note="artifacts available" mono />
+              </div>
+            </Card>
           </div>
 
           <div className="md:col-span-4">
@@ -599,10 +692,17 @@ export default function CompliancePage() {
                 subtitle="Evidence and posture statements only."
                 right={<Pill tone="good">ALLOWED</Pill>}
               />
-              <div className="mt-2 space-y-3">
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem title="We provide evidence artifacts" body="Structured outputs designed for review contexts." />
                 <ChecklistItem title="We expose review posture" body="Continuity/integrity/lineage signals for oversight." />
                 <ChecklistItem title="We preserve lineage" body="Traceability to source context and time windows." />
+              </div>
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Artifacts" value="PROVIDED" note="review contexts" mono />
+                  <MetricTile label="Posture" value="EXPOSED" note="signals for oversight" mono />
+                  <MetricTile label="Lineage" value="PRESERVED" note="traceability retained" mono />
+                </div>
               </div>
             </Card>
 
@@ -612,10 +712,17 @@ export default function CompliancePage() {
                 subtitle="Outcomes, approvals, and compliance claims."
                 right={<Pill tone="bad">FORBIDDEN</Pill>}
               />
-              <div className="mt-2 space-y-3">
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem title="No compliance determination" body="We do not decide pass/fail or regulatory acceptance." />
                 <ChecklistItem title="No certification or approval" body="We do not certify, approve, or validate outcomes." />
                 <ChecklistItem title="No guarantee language" body="We do not promise results, safety, or regulatory outcomes." />
+              </div>
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Compliance" value="NO DETERMINATION" note="external only" mono />
+                  <MetricTile label="Approval" value="NO CERTIFY" note="no approvals" mono />
+                  <MetricTile label="Guarantees" value="NONE" note="no outcome guarantees" mono />
+                </div>
               </div>
             </Card>
           </div>
@@ -635,7 +742,7 @@ export default function CompliancePage() {
                 subtitle="What we can show publicly."
                 right={<Pill tone="good">ALLOWED</Pill>}
               />
-              <div className="mt-2 space-y-3">
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem
                   title="Review-ready artifacts"
                   body="Structured outputs that can be assessed by accountable teams."
@@ -649,6 +756,13 @@ export default function CompliancePage() {
                   body="Identifiers that allow verification of artifact linkage and integrity."
                 />
               </div>
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Artifacts" value="REVIEW-READY" note="assessable outputs" mono />
+                  <MetricTile label="Signals" value="AVAILABLE" note="continuity/integrity/lineage" mono />
+                  <MetricTile label="Receipts" value="REFERENCES" note="linkage + integrity" mono />
+                </div>
+              </div>
             </Card>
 
             <Card>
@@ -657,7 +771,7 @@ export default function CompliancePage() {
                 subtitle="What we do not expose publicly."
                 right={<Pill tone="bad">NEVER PUBLIC</Pill>}
               />
-              <div className="mt-2 space-y-3">
+              <div className="mt-2 space-y-3 hidden md:block">
                 <ChecklistItem
                   title="Algorithms and implementation logic"
                   body="No pipeline logic, scoring logic, or internal computation is disclosed publicly."
@@ -670,6 +784,13 @@ export default function CompliancePage() {
                   title="Sensitive operational data"
                   body="No raw operational data is exposed publicly unless explicitly authorized in the deployment."
                 />
+              </div>
+              <div className="mt-2 md:hidden">
+                <div className="grid grid-cols-1 gap-3">
+                  <MetricTile label="Algorithms" value="NOT PUBLIC" note="no internal logic" mono />
+                  <MetricTile label="Schemas" value="NOT PUBLIC" note="no internals" mono />
+                  <MetricTile label="Raw data" value="CONTROLLED" note="authorized only" mono />
+                </div>
               </div>
             </Card>
           </div>
@@ -690,7 +811,9 @@ export default function CompliancePage() {
                     We focus on evidence outputs, verification surfaces, and review readiness — not internals.
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
+
+                {/* Mobile: stack buttons */}
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2">
                   <LinkButton href="/contact" variant="secondary">
                     Contact EcoVeraZ
                   </LinkButton>
