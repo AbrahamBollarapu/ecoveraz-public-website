@@ -118,10 +118,12 @@ export function Header() {
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  // Close drawer on navigation
   React.useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
+  // ESC to close
   React.useEffect(() => {
     if (!mobileOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -129,6 +131,16 @@ export function Header() {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
+  }, [mobileOpen]);
+
+  // Prevent background scroll when drawer is open
+  React.useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
   }, [mobileOpen]);
 
   return (
@@ -148,7 +160,7 @@ export function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
             {items.map((item) => {
               const active = isActive(pathname, item.href);
               return (
@@ -199,6 +211,7 @@ export function Header() {
 
           {/* Right controls */}
           <div className="flex items-center gap-2">
+            {/* Mobile academy shortcut */}
             <Link
               href="/academy"
               aria-label="Academy"
@@ -213,6 +226,7 @@ export function Header() {
               <AcademyIcon active={academyActive} />
             </Link>
 
+            {/* Desktop CTAs */}
             <div className="hidden items-center gap-2 md:flex">
               <LinkButton href="/contact#general" variant="secondary">
                 Contact
@@ -222,9 +236,12 @@ export function Header() {
               </LinkButton>
             </div>
 
+            {/* Mobile menu toggle */}
             <button
               type="button"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="evz-mobile-drawer"
               onClick={() => setMobileOpen((v) => !v)}
               className={[
                 "inline-flex items-center justify-center rounded-md p-2 transition-colors md:hidden",
@@ -238,6 +255,85 @@ export function Header() {
           </div>
         </div>
       </Container>
+
+      {/* Mobile drawer (overlay + panel) */}
+      {mobileOpen ? (
+        <div className="md:hidden" id="evz-mobile-drawer">
+          {/* Overlay */}
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setMobileOpen(false)}
+            className="fixed inset-0 z-40 bg-bg-950/55"
+          />
+
+          {/* Panel */}
+          <div className="fixed left-0 right-0 top-14 z-50 border-b border-border bg-bg-900">
+            <Container>
+              <div className="py-4">
+                <nav aria-label="Mobile" className="flex flex-col gap-1">
+                  {items.map((item) => {
+                    const active = isActive(pathname, item.href);
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={[
+                          "flex items-center justify-between rounded-md px-3 py-2 text-sm transition-colors",
+                          active
+                            ? "bg-surface-2 text-text-100"
+                            : "text-text-300 hover:text-text-100 hover:bg-surface-2",
+                        ].join(" ")}
+                      >
+                        <span>{item.label}</span>
+                        {active ? <span className="h-1.5 w-1.5 rounded-full bg-primary-400/80" /> : null}
+                      </Link>
+                    );
+                  })}
+
+                  {showInvestor ? (
+                    <Link
+                      href="/investor"
+                      className={[
+                        "mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
+                        isActive(pathname, "/investor")
+                          ? "bg-surface-2 text-text-100"
+                          : "text-text-300 hover:text-text-100 hover:bg-surface-2",
+                      ].join(" ")}
+                    >
+                      <LockIcon />
+                      <span>Investor</span>
+                    </Link>
+                  ) : null}
+
+                  <Link
+                    href="/academy"
+                    className={[
+                      "mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
+                      academyActive
+                        ? "bg-surface-2 text-text-100"
+                        : "text-text-300 hover:text-text-100 hover:bg-surface-2",
+                    ].join(" ")}
+                  >
+                    <AcademyIcon active={academyActive} />
+                    <span>Academy</span>
+                  </Link>
+                </nav>
+
+                {/* Mobile CTAs (executive, minimal) */}
+                <div className="mt-4 grid grid-cols-1 gap-2">
+                  <LinkButton href="/trust-core" variant="primary" className="w-full">
+                    Trust Core
+                  </LinkButton>
+                  <LinkButton href="/contact#general" variant="secondary" className="w-full">
+                    Contact
+                  </LinkButton>
+                </div>
+              </div>
+            </Container>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }

@@ -58,7 +58,7 @@ export default function HomePage() {
               compliance. All determinations remain external.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-2">
+            <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2">
               <LinkButton href="/trust-core" variant="primary">
                 Trust Core
               </LinkButton>
@@ -112,7 +112,7 @@ export default function HomePage() {
         subtitle="From measurement to certificate — without trust gaps."
       >
         <Grid className="md:gap-6">
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-5">
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-5">
             <FlowStep
               n="01"
               title="Sensors & devices"
@@ -148,7 +148,8 @@ export default function HomePage() {
         subtitle="Representative operational signals and evidence indicators."
       >
         <Grid>
-          <div className="md:col-span-8">
+          {/* Desktop/Tablet chart: hide on mobile (executive summary rule) */}
+          <div className="hidden md:block md:col-span-8">
             <ChartCard
               title="Operational trend (example)"
               subtitle="Representative signal for evidence continuity."
@@ -161,6 +162,36 @@ export default function HomePage() {
                 thresholdHigh={80}
               />
             </ChartCard>
+          </div>
+
+          {/* Mobile summary card instead of chart */}
+          <div className="md:hidden">
+            <Card>
+              <CardHeader
+                title="Operational trend (summary)"
+                subtitle="Executive view — full trend available on tablet/desktop."
+              />
+              <div className="grid grid-cols-1 gap-3">
+                <MetricTile
+                  label="Window"
+                  value="24H"
+                  note="representative trend window"
+                  mono
+                />
+                <MetricTile
+                  label="Continuity"
+                  value="OK"
+                  note="signal continuity indicator"
+                  mono
+                />
+                <MetricTile
+                  label="Policy bands"
+                  value="ACTIVE"
+                  note="threshold bands applied"
+                  mono
+                />
+              </div>
+            </Card>
           </div>
 
           <div className="md:col-span-4">
@@ -200,7 +231,7 @@ export default function HomePage() {
         subtitle="Trust is established through disciplined evidence handling."
       >
         <Grid>
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-4">
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
             <Card>
               <CardHeader title="Continuity" subtitle="Coverage stability." />
               <KpiRow label="Window" value="24h" mono />
@@ -244,9 +275,12 @@ export default function HomePage() {
       </Section>
 
       {/* Section 5 — Audience */}
-      <Section title="Who this serves" subtitle="Role-first framing for accountable teams.">
+      <Section
+        title="Who this serves"
+        subtitle="Role-first framing for accountable teams."
+      >
         <Grid>
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-4">
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
             <Card>
               <CardHeader title="Operations / EHS" subtitle="Operational control." />
               <div className="text-sm text-text-300">
@@ -293,7 +327,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2">
                   <LinkButton href="/contact#evaluation" variant="secondary">
                     Request Evaluation
                   </LinkButton>
