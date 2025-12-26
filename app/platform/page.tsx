@@ -38,7 +38,8 @@ function LayerCard({
         <span className="text-text-200">Eliminates trust gap:</span> {trustGap}
       </div>
 
-      <ul className="mt-3 grid list-disc gap-1 pl-5 text-sm text-text-300">
+      {/* Mobile executive rule: hide dense bullet lists; show from tablet up */}
+      <ul className="mt-3 hidden list-disc gap-1 pl-5 text-sm text-text-300 sm:grid">
         {bullets.map((b) => (
           <li key={b}>{b}</li>
         ))}
@@ -106,12 +107,14 @@ export default function PlatformPage() {
               defensible reporting workflows.
             </div>
 
-            <div className="mt-3 text-xs text-text-400">
+            {/* Mobile executive rule: demote boundary note on mobile only */}
+            <div className="mt-3 text-xs text-text-400 md:text-sm md:text-text-300">
               Boundary: EcoVeraZ does not certify, approve, rate, or determine
               regulatory compliance. Determinations remain external.
             </div>
 
-            <div className="mt-6 flex items-center gap-2">
+            {/* Mobile executive rule: more breathing room + stack CTAs on mobile */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2">
               <LinkButton href="/trust-core" variant="primary">
                 Trust Core
               </LinkButton>
@@ -152,7 +155,8 @@ export default function PlatformPage() {
         subtitle="From measurement to certificate — without trust gaps."
       >
         <Grid>
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-4">
+          {/* Mobile: 1 col; Tablet: 2 cols; Desktop: 4 cols */}
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
             <LayerCard
               label="01"
               title="Instrumentation"
@@ -203,7 +207,8 @@ export default function PlatformPage() {
         subtitle="Representative operational signal and evidence indicators."
       >
         <Grid>
-          <div className="md:col-span-8">
+          {/* Desktop/Tablet chart: hide on mobile (executive summary rule) */}
+          <div className="hidden md:block md:col-span-8">
             <ChartCard
               title="Operational trend (example)"
               subtitle="Representative signal for continuity review."
@@ -216,6 +221,36 @@ export default function PlatformPage() {
                 thresholdHigh={80}
               />
             </ChartCard>
+          </div>
+
+          {/* Mobile summary card instead of chart */}
+          <div className="md:hidden">
+            <Card>
+              <CardHeader
+                title="Operational trend (summary)"
+                subtitle="Executive view — full trend available on tablet/desktop."
+              />
+              <div className="grid grid-cols-1 gap-3">
+                <MetricTile
+                  label="Window"
+                  value="24H"
+                  note="representative trend window"
+                  mono
+                />
+                <MetricTile
+                  label="Continuity"
+                  value="OK"
+                  note="coverage stability indicator"
+                  mono
+                />
+                <MetricTile
+                  label="Policy bands"
+                  value="ACTIVE"
+                  note="threshold bands applied"
+                  mono
+                />
+              </div>
+            </Card>
           </div>
 
           <div className="md:col-span-4">
@@ -255,7 +290,8 @@ export default function PlatformPage() {
         subtitle="Rules before outputs. Oversight before claims."
       >
         <Grid>
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-4">
+          {/* Mobile: 1 col; Tablet: 2 cols; Desktop: 4 cols */}
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
             <Card>
               <CardHeader
                 title="Review readiness"
@@ -324,12 +360,10 @@ export default function PlatformPage() {
       </Section>
 
       {/* Modules */}
-      <Section
-        title="Modules"
-        subtitle="Composable capabilities grouped by layer."
-      >
+      <Section title="Modules" subtitle="Composable capabilities grouped by layer.">
         <Grid>
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {/* Mobile: 1 col; Tablet: 2 cols; Desktop: 3 cols */}
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
             <ModuleCard
               title="Evidence lineage"
               body="Traceability across transformations and aggregation."
@@ -376,6 +410,7 @@ export default function PlatformPage() {
         subtitle="Operations first, then evidence, then governance, then verification."
       >
         <Grid>
+          {/* Mobile: 1 col; Tablet+: 2 cols */}
           <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             <Card>
               <CardHeader
@@ -419,11 +454,9 @@ export default function PlatformPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <LinkButton
-                    href="mailto:contact@ecoveraz.com"
-                    variant="secondary"
-                  >
+                {/* Mobile: stack buttons for ergonomics */}
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2">
+                  <LinkButton href="mailto:contact@ecoveraz.com" variant="secondary">
                     Email EcoVeraZ
                   </LinkButton>
                   <LinkButton href="/trust-core" variant="primary">
