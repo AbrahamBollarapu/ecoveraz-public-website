@@ -53,12 +53,14 @@ export default function HomePage() {
               workflows.
             </p>
 
-            <p className="mt-4 text-sm text-text-300">
+            {/* (2) Micro-polish: demote disclaimer on mobile only */}
+            <p className="mt-4 text-xs text-text-400 md:text-sm md:text-text-300">
               EcoVeraZ does not certify, approve, rate, or determine regulatory
               compliance. All determinations remain external.
             </p>
 
-            <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2">
+            {/* (3) Micro-polish: increase CTA breathing room + spacing */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2">
               <LinkButton href="/trust-core" variant="primary">
                 Trust Core
               </LinkButton>
