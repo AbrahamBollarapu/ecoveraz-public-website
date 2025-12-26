@@ -14,7 +14,13 @@ export function Card({
   className?: string;
 }) {
   return (
-    <div className={clsx("rounded-md border border-border-700 bg-bg-800", dense ? "p-3" : "p-4", className)}>
+    <div
+      className={clsx(
+        "rounded-md border border-border-700 bg-bg-800",
+        dense ? "p-3 md:p-4" : "p-4 md:p-5",
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -30,10 +36,12 @@ export function CardHeader({
   right?: React.ReactNode;
 }) {
   return (
-    <div className="mb-3 flex items-start justify-between gap-4">
+    <div className="mb-3 md:mb-4 flex items-start justify-between gap-4">
       <div>
         <div className="text-base font-semibold text-text-100">{title}</div>
-        {subtitle ? <div className="mt-1 text-sm text-text-300">{subtitle}</div> : null}
+        {subtitle ? (
+          <div className="mt-1 text-sm text-text-300">{subtitle}</div>
+        ) : null}
       </div>
       {right ? <div className="shrink-0">{right}</div> : null}
     </div>
