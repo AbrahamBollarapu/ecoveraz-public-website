@@ -40,8 +40,8 @@ export default function BoardWalkthroughPage() {
 
           <div className="mt-4 space-y-2 text-sm text-muted">
             <p>
-              This walkthrough describes what a board may inspect, what remains intentionally withheld, and where decision
-              authority sits.
+              This walkthrough describes what a board may inspect, what remains intentionally withheld, and where
+              decision authority sits.
             </p>
             <p>
               EcoVeraZ does not certify, approve, rate, or determine regulatory compliance. EcoVeraZ provides evidence
@@ -53,6 +53,51 @@ export default function BoardWalkthroughPage() {
             <StatusBadge tone="neutral">Read-only</StatusBadge>
             <StatusBadge tone="neutral">Governance</StatusBadge>
             <StatusBadge tone="neutral">No outcomes</StatusBadge>
+          </div>
+        </Card>
+      </Section>
+
+      {/* Phase-4 — Context headers (scaffolding, no redesign) */}
+      <Section
+        title="Context for verification"
+        subtitle="Short framing used across certificates, trust views, and verification surfaces."
+      >
+        <Card>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <div className="text-xs text-muted">What was measured</div>
+              <div className="mt-1 text-sm text-muted">
+                Time-bound operational measurements captured from deployed devices.
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs text-muted">What evidence was generated</div>
+              <div className="mt-1 text-sm text-muted">
+                Preserved evidence artifacts (packs/manifests/checksums) referencing the declared window.
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs text-muted">What governance rules were applied</div>
+              <div className="mt-1 text-sm text-muted">
+                Review gates, completeness checks, and disclosure boundaries applied before outputs.
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs text-muted">What was anchored</div>
+              <div className="mt-1 text-sm text-muted">
+                Optional cryptographic anchoring when required; receipts still bind integrity references.
+              </div>
+            </div>
+
+            <div className="md:col-span-2">
+              <div className="text-xs text-muted">How this can be verified</div>
+              <div className="mt-1 text-sm text-muted">
+                Receipt-based verification surfaces allow independent checking without exposing internals.
+              </div>
+            </div>
           </div>
         </Card>
       </Section>

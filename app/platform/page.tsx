@@ -12,6 +12,41 @@ import { ChartCard } from "@/components/charts/ChartCard";
 import { OperationalTrendChart } from "@/components/charts/OperationalTrendChart";
 import { OPERATIONAL_TREND_24H } from "@/lib/mock-chart";
 
+function LayerCard({
+  label,
+  title,
+  trustGap,
+  bullets,
+}: {
+  label: string;
+  title: string;
+  trustGap: string;
+  bullets: string[];
+}) {
+  return (
+    <Card>
+      <div className="flex items-start justify-between gap-4">
+        <div className="text-sm text-text-300 evz-mono">{label}</div>
+        <StatusBadge tone="neutral" mono>
+          LAYER
+        </StatusBadge>
+      </div>
+
+      <div className="mt-3 text-base font-semibold text-text-100">{title}</div>
+
+      <div className="mt-2 text-sm text-text-300">
+        <span className="text-text-200">Eliminates trust gap:</span> {trustGap}
+      </div>
+
+      <ul className="mt-3 grid list-disc gap-1 pl-5 text-sm text-text-300">
+        {bullets.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
+      </ul>
+    </Card>
+  );
+}
+
 function ModuleCard({
   title,
   body,
@@ -52,7 +87,7 @@ function ModuleCard({
 export default function PlatformPage() {
   return (
     <>
-      {/* Top framing */}
+      {/* Hero */}
       <Section size="lg">
         <Grid>
           <div className="md:col-span-7">
@@ -61,13 +96,13 @@ export default function PlatformPage() {
             </div>
 
             <div className="mt-4 text-lg text-text-200">
-              EcoVeraZ is an operational evidence infrastructure that converts
-              operational measurements into traceable records and verifiable
-              outputs.
+              EcoVeraZ is an operational evidence infrastructure that turns
+              measurements into preserved evidence, governance-ready signals, and
+              externally verifiable outputs.
             </div>
 
             <div className="mt-4 text-sm text-text-300">
-              Designed for review contexts: oversight, audit readiness, and
+              Built for review contexts: oversight, audit readiness, and
               defensible reporting workflows.
             </div>
 
@@ -89,21 +124,21 @@ export default function PlatformPage() {
           <div className="md:col-span-5">
             <div className="grid grid-cols-1 gap-3">
               <MetricTile
-                label="Evidence lineage"
-                value="Traceable"
-                note="controlled transformations"
+                label="Evidence posture"
+                value="Preserved"
+                note="no re-generation by design"
                 mono
               />
               <MetricTile
-                label="Verification surfaces"
-                value="Available"
-                note="review-ready endpoints"
+                label="Review readiness"
+                value="GATED"
+                note="rules before outputs"
                 mono
               />
               <MetricTile
-                label="Outputs"
-                value="Artifact-based"
-                note="structured for oversight"
+                label="Verification"
+                value="Receipt-based"
+                note="external verification surfaces"
                 mono
               />
             </div>
@@ -111,83 +146,60 @@ export default function PlatformPage() {
         </Grid>
       </Section>
 
-      {/* Evidence flow summary */}
+      {/* Phase-2 — Layer reframing */}
       <Section
-        title="Evidence flow (high level)"
-        subtitle="A disciplined chain from operations to review-ready outputs."
+        title="Platform layers"
+        subtitle="From measurement to certificate — without trust gaps."
       >
         <Grid>
           <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-4">
-            <Card>
-              <CardHeader
-                title="Capture"
-                subtitle="Operational measurements recorded with context."
-              />
-              <KpiRow
-                label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    CONTROLLED
-                  </StatusBadge>
-                }
-              />
-              <KpiRow label="Signal" value="Timestamped records" mono />
-            </Card>
-
-            <Card>
-              <CardHeader
-                title="Lineage"
-                subtitle="Traceability across transformations and aggregation."
-              />
-              <KpiRow
-                label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    VERIFIABLE
-                  </StatusBadge>
-                }
-              />
-              <KpiRow label="Signal" value="Evidence lineage" mono />
-            </Card>
-
-            <Card>
-              <CardHeader
-                title="Verify"
-                subtitle="Verification surfaces used in review contexts."
-              />
-              <KpiRow
-                label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    AVAILABLE
-                  </StatusBadge>
-                }
-              />
-              <KpiRow label="Signal" value="Continuity & integrity" mono />
-            </Card>
-
-            <Card>
-              <CardHeader
-                title="Output"
-                subtitle="Artifacts suited for reporting and oversight."
-              />
-              <KpiRow
-                label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    READY
-                  </StatusBadge>
-                }
-              />
-              <KpiRow label="Signal" value="Structured outputs" mono />
-            </Card>
+            <LayerCard
+              label="01"
+              title="Instrumentation"
+              trustGap="Unverifiable reality capture"
+              bullets={[
+                "Deployed sensors & devices capture physical conditions",
+                "Time-bound measurement windows",
+                "Context + identity for each measurement stream",
+              ]}
+            />
+            <LayerCard
+              label="02"
+              title="Evidence"
+              trustGap="Evidence that cannot be reproduced or traced"
+              bullets={[
+                "Raw + derived data handled as evidence artifacts",
+                "Deterministic generation for repeatability",
+                "Cryptographic fingerprints for integrity checks",
+              ]}
+            />
+            <LayerCard
+              label="03"
+              title="Governance"
+              trustGap="Outputs produced before review rules are satisfied"
+              bullets={[
+                "Completeness rules and review gates",
+                "Continuity + integrity signals surfaced for oversight",
+                "Optional anchoring when required (receipt issuance)",
+              ]}
+            />
+            <LayerCard
+              label="04"
+              title="Verification"
+              trustGap="Claims that cannot be independently verified"
+              bullets={[
+                "Certificates tied to preserved evidence (outcome, not input)",
+                "Receipts enable external verification",
+                "Public verification surfaces for trust transfer",
+              ]}
+            />
           </div>
         </Grid>
       </Section>
 
-      {/* Platform snapshot */}
+      {/* Evidence layer — snapshot */}
       <Section
-        title="Platform snapshot"
+        title="Evidence snapshot"
         subtitle="Representative operational signal and evidence indicators."
       >
         <Grid>
@@ -228,7 +240,7 @@ export default function PlatformPage() {
                 <MetricTile
                   label="Optional anchoring"
                   value="Configurable"
-                  note="cryptographic anchoring when required"
+                  note="receipt mode when required"
                   mono
                 />
               </div>
@@ -237,75 +249,150 @@ export default function PlatformPage() {
         </Grid>
       </Section>
 
+      {/* Governance layer — enforcement posture */}
+      <Section
+        title="Governance"
+        subtitle="Rules before outputs. Oversight before claims."
+      >
+        <Grid>
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-4">
+            <Card>
+              <CardHeader
+                title="Review readiness"
+                subtitle="Completeness gates applied before outputs."
+              />
+              <KpiRow label="Mode" value="Gated" mono />
+              <KpiRow
+                label="Posture"
+                value={
+                  <StatusBadge tone="neutral" mono>
+                    CONTROLLED
+                  </StatusBadge>
+                }
+              />
+            </Card>
+
+            <Card>
+              <CardHeader
+                title="Continuity"
+                subtitle="Coverage stability within defined windows."
+              />
+              <KpiRow label="Window" value="24h" mono />
+              <KpiRow
+                label="Status"
+                value={
+                  <StatusBadge tone="good" mono>
+                    OK
+                  </StatusBadge>
+                }
+              />
+            </Card>
+
+            <Card>
+              <CardHeader
+                title="Integrity"
+                subtitle="Consistency checks across evidence handling."
+              />
+              <KpiRow label="Checks" value="Enabled" mono />
+              <KpiRow
+                label="Status"
+                value={
+                  <StatusBadge tone="neutral" mono>
+                    AVAILABLE
+                  </StatusBadge>
+                }
+              />
+            </Card>
+
+            <Card>
+              <CardHeader
+                title="Receipts"
+                subtitle="Receipt surfaces enable independent verification."
+              />
+              <KpiRow label="Posture" value="Receipt-based" mono />
+              <KpiRow
+                label="Status"
+                value={
+                  <StatusBadge tone="neutral" mono>
+                    VERIFIABLE
+                  </StatusBadge>
+                }
+              />
+            </Card>
+          </div>
+        </Grid>
+      </Section>
+
       {/* Modules */}
       <Section
         title="Modules"
-        subtitle="Composable capabilities — presented at the outcome layer."
+        subtitle="Composable capabilities grouped by layer."
       >
         <Grid>
           <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             <ModuleCard
               title="Evidence lineage"
-              body="Trace outputs to operational source context."
+              body="Traceability across transformations and aggregation."
               href="/modules/evidence-lineage"
-              badge="MODULE"
+              badge="EVIDENCE"
             />
             <ModuleCard
               title="Verification endpoints"
-              body="Review surfaces for continuity and integrity."
+              body="Receipt surfaces used in review and external verification contexts."
               href="/modules/verification-endpoints"
-              badge="MODULE"
+              badge="VERIFICATION"
             />
             <ModuleCard
               title="Artifact outputs"
-              body="Structured artifacts suited for oversight."
+              body="Deterministic evidence artifacts suitable for review."
               href="/modules/artifact-outputs"
-              badge="MODULE"
+              badge="EVIDENCE"
             />
             <ModuleCard
               title="Governance signals"
-              body="High-signal indicators for accountable teams."
+              body="Readiness gates and oversight indicators."
               href="/modules/governance-signals"
-              badge="MODULE"
+              badge="GOVERNANCE"
             />
             <ModuleCard
               title="Alignment workflows"
-              body="Support ESG-aligned reporting workflows (deployment dependent)."
+              body="Downstream ESG-aligned workflows expressed through outputs and evidence handling."
               href="/modules/alignment-workflows"
-              badge="MODULE"
+              badge="VERIFICATION"
             />
             <ModuleCard
               title="Optional anchoring"
-              body="Cryptographic anchoring when required."
+              body="Cryptographic proof when required by policy or counterparties."
               href="/modules/optional-anchoring"
-              badge="MODULE"
+              badge="GOVERNANCE"
             />
           </div>
         </Grid>
       </Section>
 
-      {/* Where it fits */}
+      {/* Where EcoVeraZ fits */}
       <Section
         title="Where EcoVeraZ fits"
-        subtitle="Built to support operations-first oversight without exposing internals publicly."
+        subtitle="Operations first, then evidence, then governance, then verification."
       >
         <Grid>
           <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             <Card>
               <CardHeader
                 title="Operations-first"
-                subtitle="Evidence generated from operational measurements, then consumed downstream."
+                subtitle="Measurement is the source of truth."
               />
               <div className="text-sm text-text-300">
-                The platform is designed so that operations remain the source of
-                truth, while review functions consume verifiable outputs.
+                EcoVeraZ starts with time-bound operational measurements and
+                preserves them as evidence, instead of beginning with claims or
+                reporting outputs.
               </div>
             </Card>
 
             <Card>
               <CardHeader
                 title="Downstream alignment"
-                subtitle="Supports ESG-aligned reporting workflows after operational context is established."
+                subtitle="Supports ESG-aligned workflows after operational context is established."
               />
               <div className="text-sm text-text-300">
                 Alignment is expressed through outputs and evidence handling. It
@@ -324,16 +411,19 @@ export default function PlatformPage() {
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div>
                   <div className="text-base font-semibold text-text-100">
-                    Walk through the platform in a controlled demo.
+                    Explore the measurement → evidence → verification chain.
                   </div>
                   <div className="mt-1 text-sm text-text-300">
-                    We focus on evidence outputs, verification surfaces, and how
-                    they behave under scrutiny.
+                    Layered trust by design. External determinations remain
+                    external.
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <LinkButton href="/contact#general" variant="secondary">
+                  <LinkButton
+                    href="mailto:contact@ecoveraz.com"
+                    variant="secondary"
+                  >
                     Email EcoVeraZ
                   </LinkButton>
                   <LinkButton href="/trust-core" variant="primary">

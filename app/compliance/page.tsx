@@ -194,7 +194,69 @@ export default function CompliancePage() {
         </Grid>
       </Section>
 
-      {/* NEW Section — Operating Doctrine (Regulator Anchor) */}
+      {/* Phase-3 — Regulator Trust Block (MANDATORY) */}
+      <Section
+        title="Why regulators can trust EcoVeraZ"
+        subtitle="Compliance posture is not a claim. It is a verifiable chain: preserved evidence, time-bounded measurements, reproducible artifacts, and receipt-based verification."
+      >
+        <Grid>
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <Card>
+              <CardHeader
+                title="Evidence is preserved (not regenerated)"
+                subtitle="EcoVeraZ treats operational measurements as records that must remain inspectable."
+                right={<Pill>NON-REGENERATIVE</Pill>}
+              />
+              <div className="mt-2 space-y-3">
+                <ChecklistItem
+                  title="Preservation posture"
+                  body="Evidence artifacts are preserved as review objects; results are not re-created ad hoc for different audiences."
+                />
+                <ChecklistItem
+                  title="Time-bounded measurement"
+                  body="Measurements are evaluated within defined windows; gaps and coverage are visible to reviewers."
+                />
+                <ChecklistItem
+                  title="Deterministic artifacts"
+                  body="Evidence packs are produced using controlled, repeatable generation to support reproducibility in review contexts."
+                />
+              </div>
+            </Card>
+
+            <Card>
+              <CardHeader
+                title="Verification is external and receipt-based"
+                subtitle="Reviewers can verify linkage without relying on internal trust assumptions."
+                right={<Pill>RECEIPTS</Pill>}
+              />
+              <div className="mt-2 space-y-3">
+                <ChecklistItem
+                  title="Reproducible certificates"
+                  body="Certificates are tied to preserved evidence references and can be validated against those references."
+                />
+                <ChecklistItem
+                  title="Receipt-based verification"
+                  body="Verification uses receipts/identifiers that support independent checking of integrity and lineage."
+                />
+                <ChecklistItem
+                  title="Boundary discipline"
+                  body="Public and shared views expose artifacts and posture signals, not proprietary internals or algorithms."
+                />
+              </div>
+            </Card>
+          </div>
+        </Grid>
+
+        <div className="mt-4 rounded-xl border border-border bg-surface-2 px-4 py-3">
+          <div className="text-xs font-medium text-text-400">Regulator note</div>
+          <div className="mt-1 text-xs text-text-400 leading-relaxed">
+            EcoVeraZ is intentionally designed as evidence infrastructure. It preserves what was measured and what was reviewed.
+            Compliance conclusions remain with accountable external reviewers.
+          </div>
+        </div>
+      </Section>
+
+      {/* Section — Operating Doctrine (Regulator Anchor) */}
       <Section
         title="Operating doctrine"
         subtitle="Regulator-safe definitions, boundaries, and responsibilities."
@@ -276,7 +338,7 @@ export default function CompliancePage() {
         </Grid>
       </Section>
 
-      {/* NEW Section — RRI Gates → Evidence Ladder mapping */}
+      {/* Section — RRI Gates → Evidence Ladder mapping */}
       <Section
         title="RRI gates mapped to the Evidence Ladder"
         subtitle="How review readiness gates align to the evidence lifecycle (investor + regulator backbone)."
@@ -392,7 +454,7 @@ export default function CompliancePage() {
         </Grid>
       </Section>
 
-      {/* NEW Section — Reviewer workflow */}
+      {/* Section — Reviewer workflow */}
       <Section
         title="How reviewers use EcoVeraZ outputs"
         subtitle="A regulator-style flow: what is inspected, what is concluded, and by whom."
@@ -524,7 +586,7 @@ export default function CompliancePage() {
         </Grid>
       </Section>
 
-      {/* NEW Section — Claims firewall */}
+      {/* Section — Claims firewall */}
       <Section
         title="Claims firewall"
         subtitle="Hard language boundaries to prevent outcome drift in regulated contexts."

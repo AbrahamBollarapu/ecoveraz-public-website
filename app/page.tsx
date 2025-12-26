@@ -106,37 +106,37 @@ export default function HomePage() {
         </Grid>
       </Section>
 
-      {/* Section 2 — Flow */}
+      {/* Section 2 — System Journey (Phase-1 LOCK) */}
       <Section
-        title="From operations to verifiable outputs"
-        subtitle="A controlled evidence flow designed for review, audit, and oversight."
+        title="How EcoVeraZ turns reality into proof"
+        subtitle="From measurement to certificate — without trust gaps."
       >
         <Grid className="md:gap-6">
           <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-5">
             <FlowStep
               n="01"
-              title="Capture"
-              body="Record operational measurements with timestamps and context."
+              title="Sensors & devices"
+              body="Capture physical conditions and operational signals directly from deployed devices."
             />
             <FlowStep
               n="02"
-              title="Normalize"
-              body="Standardize signals into consistent evidence-ready records."
+              title="Raw operational measurements"
+              body="Store time-bound measurements as raw operational records with timestamps and context."
             />
             <FlowStep
               n="03"
-              title="Lineage"
-              body="Maintain traceability across transformations and aggregation."
+              title="Evidence & audit packs"
+              body="Package raw and derived datasets into deterministic evidence artifacts for review."
             />
             <FlowStep
               n="04"
-              title="Verify"
-              body="Expose verification surfaces to validate integrity and continuity."
+              title="Governance & review readiness"
+              body="Apply completeness rules and review gates before any external claims are made."
             />
             <FlowStep
               n="05"
-              title="Output"
-              body="Generate artifacts suited for reporting, review, and oversight."
+              title="Certificates & public verification"
+              body="Issue verifiable certificates and expose receipt-based public verification."
             />
           </div>
         </Grid>
@@ -206,11 +206,7 @@ export default function HomePage() {
               <KpiRow label="Window" value="24h" mono />
               <KpiRow
                 label="Status"
-                value={
-                  <StatusBadge tone="good" mono>
-                    OK
-                  </StatusBadge>
-                }
+                value={<StatusBadge tone="good" mono>OK</StatusBadge>}
               />
             </Card>
 
@@ -219,11 +215,7 @@ export default function HomePage() {
               <KpiRow label="Checks" value="Enabled" mono />
               <KpiRow
                 label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    AVAILABLE
-                  </StatusBadge>
-                }
+                value={<StatusBadge tone="neutral" mono>AVAILABLE</StatusBadge>}
               />
             </Card>
 
@@ -232,11 +224,7 @@ export default function HomePage() {
               <KpiRow label="Traceability" value="Present" mono />
               <KpiRow
                 label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    VERIFIABLE
-                  </StatusBadge>
-                }
+                value={<StatusBadge tone="neutral" mono>VERIFIABLE</StatusBadge>}
               />
             </Card>
 
@@ -248,11 +236,7 @@ export default function HomePage() {
               <KpiRow label="Mode" value="Optional" mono />
               <KpiRow
                 label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    CONFIGURABLE
-                  </StatusBadge>
-                }
+                value={<StatusBadge tone="neutral" mono>CONFIGURABLE</StatusBadge>}
               />
             </Card>
           </div>
@@ -271,10 +255,7 @@ export default function HomePage() {
             </Card>
 
             <Card>
-              <CardHeader
-                title="ESG / Sustainability"
-                subtitle="Governance-grade evidence."
-              />
+              <CardHeader title="ESG / Sustainability" subtitle="Governance-grade evidence." />
               <div className="text-sm text-text-300">
                 Review-ready artifacts suitable for ESG and sustainability workflows.
               </div>

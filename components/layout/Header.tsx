@@ -51,6 +51,35 @@ function AcademyIcon({ active }: { active: boolean }) {
   );
 }
 
+function LockIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className="text-text-300"
+    >
+      <path
+        d="M7 11V8a5 5 0 0110 0v3"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <rect
+        x="5"
+        y="11"
+        width="14"
+        height="10"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+    </svg>
+  );
+}
+
 function MenuIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -85,18 +114,16 @@ export function Header() {
   );
 
   const academyActive = isActive(pathname, "/academy");
+  const showInvestor = process.env.NEXT_PUBLIC_SHOW_INVESTOR_LINK === "true";
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  // Close menu on route change
   React.useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
-  // ESC closes
   React.useEffect(() => {
     if (!mobileOpen) return;
-
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMobileOpen(false);
     };
@@ -120,11 +147,10 @@ export function Header() {
             />
           </Link>
 
-          {/* Nav (desktop only) */}
+          {/* Desktop nav */}
           <nav className="hidden items-center gap-6 md:flex">
             {items.map((item) => {
               const active = isActive(pathname, item.href);
-
               return (
                 <Link
                   key={item.href}
@@ -144,7 +170,18 @@ export function Header() {
               );
             })}
 
-            {/* Academy icon shortcut (desktop) */}
+            {/* Investor link (desktop only, optional) */}
+            {showInvestor && (
+              <Link
+                href="/investor"
+                className="flex items-center gap-1.5 text-sm text-text-300 hover:text-text-100 transition-colors"
+              >
+                <LockIcon />
+                <span>Investor</span>
+              </Link>
+            )}
+
+            {/* Academy shortcut */}
             <Link
               href="/academy"
               aria-label="Academy"
@@ -162,7 +199,6 @@ export function Header() {
 
           {/* Right controls */}
           <div className="flex items-center gap-2">
-            {/* Mobile: Academy shortcut */}
             <Link
               href="/academy"
               aria-label="Academy"
@@ -177,7 +213,6 @@ export function Header() {
               <AcademyIcon active={academyActive} />
             </Link>
 
-            {/* Desktop CTAs */}
             <div className="hidden items-center gap-2 md:flex">
               <LinkButton href="/contact#general" variant="secondary">
                 Contact
@@ -187,7 +222,6 @@ export function Header() {
               </LinkButton>
             </div>
 
-            {/* Mobile menu button */}
             <button
               type="button"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -204,74 +238,6 @@ export function Header() {
           </div>
         </div>
       </Container>
-
-      {/* Mobile overlay + panel */}
-      {mobileOpen ? (
-        <div className="md:hidden">
-          {/* Backdrop */}
-          <button
-            type="button"
-            aria-label="Close menu"
-            onClick={() => setMobileOpen(false)}
-            className="fixed inset-0 z-40 cursor-default bg-black/40"
-          />
-
-          {/* Panel */}
-          <div className="fixed left-0 right-0 top-14 z-50 border-b border-border bg-bg-950/98 backdrop-blur">
-            <Container>
-              <div className="py-4">
-                <div className="grid gap-2">
-                  {items.map((item) => {
-                    const active = isActive(pathname, item.href);
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className={[
-                          "rounded-md px-3 py-2 text-sm transition-colors",
-                          active
-                            ? "bg-surface-2 text-text-100"
-                            : "text-text-300 hover:text-text-100 hover:bg-surface-2",
-                        ].join(" ")}
-                      >
-                        {item.label}
-                      </Link>
-                    );
-                  })}
-
-                  <div className="mt-2 grid gap-2 border-t border-border pt-3">
-                    <Link
-                      href="/academy"
-                      className={[
-                        "rounded-md px-3 py-2 text-sm transition-colors",
-                        academyActive
-                          ? "bg-surface-2 text-text-100"
-                          : "text-text-300 hover:text-text-100 hover:bg-surface-2",
-                      ].join(" ")}
-                    >
-                      Academy
-                    </Link>
-
-                    <Link
-                      href="/contact#general"
-                      className="rounded-md px-3 py-2 text-sm text-text-300 hover:text-text-100 hover:bg-surface-2 transition-colors"
-                    >
-                      Contact
-                    </Link>
-
-                    <Link
-                      href="/trust-core"
-                      className="rounded-md px-3 py-2 text-sm text-text-100 bg-primary-400/15 hover:bg-primary-400/20 transition-colors"
-                    >
-                      Trust Core
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </Container>
-          </div>
-        </div>
-      ) : null}
     </header>
   );
 }

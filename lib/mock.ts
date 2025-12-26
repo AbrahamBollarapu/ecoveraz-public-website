@@ -10,5 +10,6 @@ export const NAV_ITEMS = [
   { href: "/modules/evidence-lineage", label: "Modules" },
   { href: "/solutions/operations", label: "Solutions" },
   { href: "/compliance", label: "Compliance" },
+  { href: "/investor", label: "Investors" },
   { href: "/resources", label: "Resources" },
 ];

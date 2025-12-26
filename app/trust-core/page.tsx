@@ -67,8 +67,8 @@ export default function TrustCorePage() {
 
           <div className="mt-4 space-y-2 text-sm text-muted">
             <p>
-              Trust Core is the immutable public foundation that EcoVeraZ
-              product surfaces, demos, and communications must conform to.
+              Trust Core is the immutable public foundation that EcoVeraZ product
+              surfaces, demos, and communications must conform to.
             </p>
             <p>
               EcoVeraZ does not certify, approve, rate, or determine regulatory
@@ -81,6 +81,53 @@ export default function TrustCorePage() {
             <Pill>Trust Core Version: {TRUST_CORE_VERSION}</Pill>
             <Pill>Last updated: {TRUST_CORE_LAST_UPDATED}</Pill>
             <Pill>Public canonical bundle</Pill>
+          </div>
+        </Card>
+      </Section>
+
+      {/* ========================================================= */}
+      {/* Phase-4 — Context headers (narrative scaffolding) */}
+      {/* ========================================================= */}
+      <Section
+        title="Context for verification"
+        subtitle="Short framing used across certificates, trust views, and public verification surfaces."
+      >
+        <Card>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <div className="text-xs text-muted">What was measured</div>
+              <div className="mt-1 text-sm text-muted">
+                Time-bound operational measurements captured from deployed devices.
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs text-muted">What evidence was generated</div>
+              <div className="mt-1 text-sm text-muted">
+                Preserved evidence artifacts (packs/manifests/checksums) referencing the declared window.
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs text-muted">What governance rules were applied</div>
+              <div className="mt-1 text-sm text-muted">
+                Review gates, completeness checks, and disclosure boundaries applied before outputs.
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs text-muted">What was anchored</div>
+              <div className="mt-1 text-sm text-muted">
+                Optional cryptographic anchoring when required; receipts still bind integrity references.
+              </div>
+            </div>
+
+            <div className="md:col-span-2">
+              <div className="text-xs text-muted">How this can be verified</div>
+              <div className="mt-1 text-sm text-muted">
+                Receipt-based verification surfaces allow independent checking without exposing internals.
+              </div>
+            </div>
           </div>
         </Card>
       </Section>
@@ -189,9 +236,7 @@ export default function TrustCorePage() {
               </div>
             ) : (
               <div className="rounded-2xl border border-border bg-card/50 p-4">
-                <p className="text-sm">
-                  No changelog entries recorded yet.
-                </p>
+                <p className="text-sm">No changelog entries recorded yet.</p>
               </div>
             )}
 
