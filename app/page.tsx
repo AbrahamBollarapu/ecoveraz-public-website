@@ -97,7 +97,6 @@ function Icon({ kind }: { kind: "sensor" | "db" | "file" | "shield" | "badge" })
 }
 
 function PipelineDiagram() {
-  // Simple, fast, and readable. Works on mobile & desktop.
   return (
     <div className="mb-4 rounded-2xl border border-border bg-surface-2 p-4">
       <div className="text-xs text-text-300 evz-mono">PIPELINE (AT A GLANCE)</div>
@@ -122,7 +121,8 @@ function PipelineDiagram() {
         </svg>
       </div>
       <div className="mt-2 text-sm text-text-300">
-        Why it matters: reviewers can follow the same path every time — no last-minute reconstruction.
+        Why it matters: reviewers can follow the same path every time — so audits don’t depend on last-minute
+        reconstruction.
       </div>
     </div>
   );
@@ -136,10 +136,10 @@ function QuoteBox() {
           “
         </div>
         <div>
-          <div className="text-sm font-semibold text-text-100">Customer outcome (typical use case)</div>
+          <div className="text-sm font-semibold text-text-100">Typical outcome (illustrative)</div>
           <div className="mt-2 text-sm text-text-300">
-            “Before EcoVeraZ, we assembled ESG proof from spreadsheets at the last minute. Now we generate
-            audit-ready files with a clear data trail — so reviews are faster and less stressful.”
+            “Before EcoVeraZ, we assembled ESG proof from spreadsheets at the last minute. Now we generate audit-ready
+            files with a clear data trail — so reviews are faster and less stressful.”
           </div>
           <div className="mt-2 text-xs text-text-400">
             Example phrasing (no customer name). Replace later with a real quote when available.
@@ -151,7 +151,6 @@ function QuoteBox() {
 }
 
 function MobileSparkline() {
-  // Lightweight, no chart dependency. Keeps mobile from feeling “stripped down”.
   return (
     <svg viewBox="0 0 120 32" className="h-8 w-full" aria-label="Trend sparkline" role="img">
       <path
@@ -230,7 +229,7 @@ function ProofSnippet({ title, body }: { title: string; body: string }) {
     <Card>
       <CardHeader
         title={title}
-        subtitle="Illustrative format (redacted). Used to explain what reviewers can inspect."
+        subtitle="Illustrative structure (redacted). Helps explain what reviewers can inspect."
         right={<StatusBadge tone="neutral" mono>PROOF</StatusBadge>}
       />
       <pre className="mt-3 overflow-x-auto rounded-xl border border-border bg-surface-2 p-3 text-xs text-text-300 evz-mono leading-relaxed">
@@ -250,9 +249,8 @@ export default function HomePage() {
       <Section size="lg">
         <Grid>
           <div className="md:col-span-7">
-            {/* Plain-language tagline (above headline) */}
             <div className="text-sm text-text-300 md:text-base">
-              We turn your operational data into trusted ESG proof — so you can pass audits with confidence.
+              Turn operational data into review-ready ESG proof — so audits are calmer and faster to complete.
             </div>
 
             <h1 className="mt-3 text-4xl font-semibold leading-tight text-text-100 md:text-5xl">
@@ -263,50 +261,50 @@ export default function HomePage() {
 
             <p className="mt-4 text-base text-text-200 md:text-lg">
               EcoVeraZ helps organizations turn everyday environmental and operational data into evidence that can be
-              reviewed by auditors, regulators, and boards — not just shown on a dashboard.
+              inspected by auditors, regulators, and boards — with a clear trail back to sources.
             </p>
 
             <div className="mt-3 text-sm text-text-300">Sensors → Analytics → Audit-ready files → Trust</div>
 
-            {/* Innovation note (1 sentence only) */}
             <div className="mt-2 text-sm text-text-300">
-              Built on modern data integrity principles — scalable, traceable, and reviewer-friendly.
+              Built for traceability and repeatability — so reviews don’t depend on manual reconstruction.
             </div>
 
-            {/* NEW: fast-track summary for Netlify audiences */}
+            {/* INSERTION POINT A — 30-second summary */}
             <div className="mt-4 rounded-xl border border-border bg-surface-2 p-4">
               <div className="text-xs text-text-300 evz-mono">30-SECOND SUMMARY</div>
               <div className="mt-2 text-sm text-text-300 leading-relaxed">
-                <span className="text-text-200 font-medium">You measure.</span> EcoVeraZ preserves the data,
-                packages review-ready files, and applies readiness gates — so reviewers can trace numbers back to
-                sources without last-minute reconstruction.
+                <span className="text-text-200 font-medium">You measure.</span> EcoVeraZ preserves the data, packages
+                inspection-ready files, and applies readiness gates — so reviewers can trace numbers to sources without
+                last-minute scrambling.
               </div>
               <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <MetricTile label="What you get" value="Audit-ready files" note="structured for inspection" mono />
-                <MetricTile label="What it avoids" value="Spreadsheet scrambles" note="less manual compilation" mono />
-                <MetricTile label="How it stays safe" value="Clear boundaries" note="no certification / no outcomes" mono />
+                <MetricTile label="What you get" value="Audit-ready files" note="organized for inspection" mono />
+                <MetricTile label="What it avoids" value="Manual compilation" note="less spreadsheet chasing" mono />
+                <MetricTile
+                  label="How it stays safe"
+                  value="Clear boundaries"
+                  note="no certification / no outcomes"
+                  mono
+                />
               </div>
             </div>
 
-            {/* Real-world anchor (1 sentence) */}
             <p className="mt-4 text-sm text-text-300">
               Example: a building’s energy use, office air quality, or equipment activity — captured over time,
-              organized month-by-month, and ready when a reviewer asks “show me the proof.”
+              packaged month-by-month, and ready when a reviewer asks “show me the trail.”
             </p>
 
-            {/* Disclaimer (kept, simplified) */}
             <p className="mt-4 text-xs text-text-400 md:text-sm md:text-text-300">
               EcoVeraZ does not certify, approve, or decide regulatory compliance. Independent reviewers and authorities
               make all final determinations.
             </p>
 
-            {/* CTA labels updated, routes unchanged */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2">
               <LinkButton href="/platform" variant="primary">
                 Platform overview
               </LinkButton>
 
-              {/* NEW: Dedicated value page (commercial, inviting) */}
               <LinkButton href="/what-you-get" variant="secondary">
                 What you get
               </LinkButton>
@@ -314,6 +312,7 @@ export default function HomePage() {
               <LinkButton href="/resources" variant="secondary">
                 Review references
               </LinkButton>
+
               <LinkButton href="/contact#evaluation" variant="secondary">
                 Request evaluation
               </LinkButton>
@@ -322,20 +321,20 @@ export default function HomePage() {
 
           <div className="md:col-span-5 md:pt-2">
             <div className="grid grid-cols-1 gap-3">
-              <MetricTile label="Operational coverage" value="98.7%" note="example site-level availability" />
-              <MetricTile label="Measurement continuity" value="OK" note="example 24h continuity check" mono />
-              <MetricTile label="Evidence readiness" value="READY" note="example outputs available for review" mono />
+              <MetricTile label="Operational coverage" value="98.7%" note="illustrative site availability" />
+              <MetricTile label="Measurement continuity" value="OK" note="illustrative continuity check" mono />
+              <MetricTile label="Evidence readiness" value="READY" note="illustrative outputs available" mono />
             </div>
           </div>
         </Grid>
       </Section>
 
-      {/* Section 1.25 — Trust strip (proof cues, no risky claims) */}
+      {/* Trust strip */}
       <Section size="sm" compact>
         <Grid>
           <div className="md:col-span-12">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
-              <MetricTile label="Audit-ready files" value="ON" note="structured files for inspection" mono />
+              <MetricTile label="Audit-ready files" value="ON" note="prepared for inspection" mono />
               <MetricTile label="Data trail" value="PRESENT" note="source → output traceability" mono />
               <MetricTile label="Time windows" value="CONTROLLED" note="clear month / period boundaries" mono />
               <MetricTile label="Optional proof" value="AVAILABLE" note="tamper-proof mode when needed" mono />
@@ -344,7 +343,7 @@ export default function HomePage() {
         </Grid>
       </Section>
 
-      {/* NEW — Start here (Netlify-style guided onboarding) */}
+      {/* Start here */}
       <Section
         title="Start here"
         subtitle="Pick the path that matches your role. Each path is short, specific, and review-safe."
@@ -354,10 +353,10 @@ export default function HomePage() {
           <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             <StartHereCard
               title="Operations / EHS"
-              subtitle="Turn day-to-day conditions into evidence you can defend."
+              subtitle="Make day-to-day conditions review-ready — without extra reporting work."
               bullets={[
                 "Measure operational reality continuously",
-                "Avoid last-minute manual compilation",
+                "Reduce manual compilation before audits",
                 "Surface high-signal readiness indicators",
               ]}
               ctaHref="/platform"
@@ -365,7 +364,7 @@ export default function HomePage() {
             />
             <StartHereCard
               title="ESG / Sustainability / Finance"
-              subtitle="Move from reporting to evidence that stands up to review."
+              subtitle="Move from narrative reporting to evidence that holds up under questions."
               bullets={[
                 "Use clear month / window boundaries",
                 "Package files for inspection and follow-ups",
@@ -376,18 +375,18 @@ export default function HomePage() {
             />
             <StartHereCard
               title="Compliance / Audit"
-              subtitle="Understand Trust Core and the gates that prevent ambiguous evidence."
+              subtitle="Inspect quickly: see what’s included, where it came from, and what changed."
               bullets={[
-                "Trust Core defines the boundaries (no certification)",
+                "Trust Core defines boundaries (no certification)",
                 "RRI gates keep evidence review-ready",
-                "Verification surfaces support independent checks",
+                "Verification supports independent checks",
               ]}
               ctaHref="/trust-core"
               ctaLabel="Open Trust Core"
             />
             <StartHereCard
               title="Investors / Boards"
-              subtitle="See the defensibility posture and why restraint is a feature."
+              subtitle="Understand defensibility and oversight signals — without the operational noise."
               bullets={[
                 "Evidence posture, not outcome claims",
                 "Repeatable review flows across sites",
@@ -400,7 +399,7 @@ export default function HomePage() {
         </Grid>
       </Section>
 
-      {/* Section 1.5 — Authority (premium + dark) */}
+      {/* Authority */}
       <Section size="sm" compact>
         <Grid>
           <div className="md:col-span-12">
@@ -419,7 +418,7 @@ export default function HomePage() {
 
                 <div className="mt-3 text-sm text-white/80 md:text-base">
                   EcoVeraZ treats ESG evidence like accounting records: it must come from real sources, be time-stamped
-                  and traceable, and be packaged so an external reviewer can trust it.
+                  and traceable, and be packaged so an external reviewer can follow the trail.
                 </div>
 
                 <div className="mt-3 text-sm text-white/80">
@@ -432,12 +431,92 @@ export default function HomePage() {
         </Grid>
       </Section>
 
-      {/* NEW — Proof strip (Netlify people want “show me something real”) */}
+      {/* Why this matters */}
+      <Section size="sm" compact>
+        <Grid>
+          <div className="md:col-span-12">
+            <Card className="bg-surface-2 border-border">
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                <div className="max-w-3xl">
+                  <div className="text-xs text-text-300 evz-mono">WHY THIS MATTERS</div>
+
+                  <div className="mt-2 text-base font-semibold text-text-100">
+                    Most ESG breakdowns come from missing trails — not bad intent.
+                  </div>
+
+                  <div className="mt-2 text-sm text-text-300 leading-relaxed">
+                    When a reviewer asks, “Where did this number come from?”, teams often chase spreadsheets, emails,
+                    and screenshots. EcoVeraZ is designed to prevent that: it keeps measurements traceable, packages
+                    evidence consistently, and makes the review path repeatable.
+                  </div>
+
+                  <div className="mt-3 text-xs text-text-400">
+                    Reminder: EcoVeraZ provides evidence infrastructure. Independent reviewers make all determinations.
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-3 md:w-[360px]">
+                  <MetricTile label="Review friction" value="REDUCED" note="clear structure + traceability" mono />
+                  <MetricTile label="Reconstruction risk" value="LOWER" note="less manual compilation" mono />
+                  <MetricTile label="Governance posture" value="CONTROLLED" note="windows + gates" mono />
+                </div>
+              </div>
+            </Card>
+          </div>
+        </Grid>
+      </Section>
+
+      {/* Proof strip */}
       <Section
         title="What reviewers can actually inspect"
-        subtitle="Examples of evidence structure (redacted). These formats make reviews faster and calmer."
+        subtitle="Examples of evidence structure (redacted). These formats reduce ambiguity during review."
         size="sm"
       >
+        {/* ========================= INSERTION POINT F =========================
+           Evidence Pack Glossary — 3 terms only, plain English, no new routes.
+        ==================================================================== */}
+        <Grid>
+          <div className="md:col-span-12">
+            <div className="mt-0 rounded-xl border border-border bg-surface-2 p-4">
+              <div className="text-xs text-text-300 evz-mono">EVIDENCE PACK GLOSSARY</div>
+              <div className="mt-2 grid grid-cols-1 gap-3 md:grid-cols-3">
+                <div className="rounded-lg border border-border bg-surface-1 p-3">
+                  <div className="text-sm font-semibold text-text-100">Manifest</div>
+                  <div className="mt-1 text-sm text-text-300">
+                    A small index that lists what’s inside the pack and how it was produced.
+                  </div>
+                </div>
+                <div className="rounded-lg border border-border bg-surface-1 p-3">
+                  <div className="text-sm font-semibold text-text-100">Window</div>
+                  <div className="mt-1 text-sm text-text-300">
+                    The exact time period covered (start/end), so numbers aren’t mixed across months.
+                  </div>
+                </div>
+                <div className="rounded-lg border border-border bg-surface-1 p-3">
+                  <div className="text-sm font-semibold text-text-100">SHA256</div>
+                  <div className="mt-1 text-sm text-text-300">
+                    A fingerprint for a file. If the file changes, the fingerprint changes.
+                  </div>
+                </div>
+              </div>
+
+              {/* ================= INSERTION POINT F2 (NEW) =================
+                 One-liner guardrail: Evidence Pack ≠ Certification
+              =========================================================== */}
+              <div className="mt-2 text-sm text-text-300">
+                <span className="font-medium text-text-200">Evidence Pack ≠ Certification:</span> these files make review
+                easier; they do not certify compliance or outcomes.
+              </div>
+              {/* ================= END INSERTION POINT F2 ================= */}
+
+              <div className="mt-2 text-xs text-text-400">
+                Glossary explains structure only. It does not imply certification, scoring, or compliance outcomes.
+              </div>
+            </div>
+          </div>
+        </Grid>
+        {/* ======================= END INSERTION POINT F ====================== */}
+
         <Grid>
           <div className="md:col-span-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
             <ProofSnippet
@@ -481,10 +560,10 @@ Note: RRI is not scoring and does not imply compliance.`}
         </Grid>
       </Section>
 
-      {/* Section 1.75 — ESG translation */}
+      {/* ESG translation */}
       <Section
         title="Where EcoVeraZ fits in sustainability and ESG workflows"
-        subtitle="Why it matters: this is how day-to-day measurements become ESG outcomes you can defend."
+        subtitle="Why it matters: this is how measurements become evidence you can defend in reviews."
         size="sm"
         compact
       >
@@ -495,10 +574,10 @@ Note: RRI is not scoring and does not imply compliance.`}
         </Grid>
       </Section>
 
-      {/* Section 2 — System Journey (Phase-1 LOCK) */}
+      {/* System Journey */}
       <Section
         title="How EcoVeraZ turns reality into proof"
-        subtitle="Why it matters: audits should be repeatable and calm — not last-minute panic."
+        subtitle="Why it matters: audits should be repeatable — not a last-minute reconstruction exercise."
       >
         <Grid className="md:gap-6">
           <div className="md:col-span-12">
@@ -522,7 +601,7 @@ Note: RRI is not scoring and does not imply compliance.`}
               n="03"
               icon="file"
               title="Audit-ready files"
-              body="Package raw + derived data into audit-ready files — so reviews aren’t rebuilt from scratch."
+              body="Package raw + derived data into audit-ready files — so reviews don’t start from scratch."
             />
             <FlowStep
               n="04"
@@ -540,13 +619,12 @@ Note: RRI is not scoring and does not imply compliance.`}
         </Grid>
       </Section>
 
-      {/* Section 3 — Snapshot */}
+      {/* Snapshot */}
       <Section
         title="Platform snapshot"
-        subtitle="Why it matters: reviewers look for stability, freshness, and clear evidence indicators."
+        subtitle="Why it matters: reviewers look for continuity, freshness, and clear evidence indicators."
       >
         <Grid>
-          {/* Desktop/Tablet chart */}
           <div className="hidden md:block md:col-span-8">
             <ChartCard
               title="Operational trend (example)"
@@ -558,7 +636,6 @@ Note: RRI is not scoring and does not imply compliance.`}
             </ChartCard>
           </div>
 
-          {/* Mobile summary card + sparkline */}
           <div className="md:hidden">
             <Card>
               <CardHeader title="Operational trend (summary)" subtitle="Mobile view — simplified trend + key indicators." />
@@ -566,9 +643,9 @@ Note: RRI is not scoring and does not imply compliance.`}
                 <MobileSparkline />
               </div>
               <div className="mt-3 grid grid-cols-1 gap-3">
-                <MetricTile label="Window" value="24H" note="example trend window" mono />
-                <MetricTile label="Continuity" value="OK" note="example continuity indicator" mono />
-                <MetricTile label="Policy bands" value="ACTIVE" note="example thresholds applied" mono />
+                <MetricTile label="Window" value="24H" note="illustrative trend window" mono />
+                <MetricTile label="Continuity" value="OK" note="illustrative continuity signal" mono />
+                <MetricTile label="Policy bands" value="ACTIVE" note="illustrative thresholds applied" mono />
               </div>
             </Card>
           </div>
@@ -586,7 +663,7 @@ Note: RRI is not scoring and does not imply compliance.`}
         </Grid>
       </Section>
 
-      {/* Quote box — breaks monotony + adds human proof (safe) */}
+      {/* Quote */}
       <Section size="sm" compact>
         <Grid>
           <div className="md:col-span-12">
@@ -595,10 +672,10 @@ Note: RRI is not scoring and does not imply compliance.`}
         </Grid>
       </Section>
 
-      {/* Section 3.5 — Outcomes (safe, no numbers, real-world framing) */}
+      {/* Outcomes */}
       <Section
         title="What changes in the real world"
-        subtitle="Practical outcomes — without last-minute spreadsheet scrambles."
+        subtitle="Practical outcomes — fewer review loops, less manual compilation, clearer governance."
         size="sm"
       >
         <Grid>
@@ -634,7 +711,7 @@ Note: RRI is not scoring and does not imply compliance.`}
         </Grid>
       </Section>
 
-      {/* Section 4 — Verification (kept, but compact) */}
+      {/* Verification */}
       <Section
         title="Verification signals"
         subtitle="Why it matters: trust is built through disciplined handling — not promises."
@@ -669,7 +746,7 @@ Note: RRI is not scoring and does not imply compliance.`}
         </Grid>
       </Section>
 
-      {/* Section 5 — Audience (de-busy: single card) */}
+      {/* Who this serves */}
       <Section title="Who this serves" subtitle="Clear value for accountable teams." size="sm">
         <Grid>
           <div className="md:col-span-12">
@@ -677,27 +754,29 @@ Note: RRI is not scoring and does not imply compliance.`}
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-4">
                 <div>
                   <div className="text-sm font-semibold text-text-100">Operations / EHS</div>
-                  <div className="mt-1 text-sm text-text-300">Run sites with confidence and fewer surprises.</div>
+                  <div className="mt-1 text-sm text-text-300">
+                    Run sites with fewer surprises and less audit preparation stress.
+                  </div>
                 </div>
 
                 <div>
                   <div className="text-sm font-semibold text-text-100">ESG / Sustainability</div>
                   <div className="mt-1 text-sm text-text-300">
-                    Tell a defensible story backed by audit-ready files.
+                    Tell a defensible story backed by structured, review-ready evidence.
                   </div>
                 </div>
 
                 <div>
                   <div className="text-sm font-semibold text-text-100">Compliance / Audit</div>
                   <div className="mt-1 text-sm text-text-300">
-                    Inspect without reconstruction — follow the data trail.
+                    Inspect without reconstruction — follow a clear trail from source to file.
                   </div>
                 </div>
 
                 <div>
                   <div className="text-sm font-semibold text-text-100">Investors / Boards</div>
                   <div className="mt-1 text-sm text-text-300">
-                    Oversight without noise — signal for governance decisions.
+                    Oversight without noise — governance signals designed for review.
                   </div>
                 </div>
               </div>
@@ -706,7 +785,7 @@ Note: RRI is not scoring and does not imply compliance.`}
         </Grid>
       </Section>
 
-      {/* Section 6 — Conversion (tightened, calmer end) */}
+      {/* Conversion */}
       <Section size="sm">
         <Grid>
           <div className="md:col-span-12">
@@ -714,8 +793,12 @@ Note: RRI is not scoring and does not imply compliance.`}
               <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
                   <div className="text-base font-semibold text-text-100">Move from ESG reporting to ESG evidence.</div>
-                  <div className="mt-1 text-sm text-text-300">Ask for an example audit-ready file during evaluation.</div>
-                  <div className="mt-1 text-xs text-text-400">Designed for calm audits, not last-minute explanations.</div>
+                  <div className="mt-1 text-sm text-text-300">
+                    During evaluation, ask for an example evidence pack and manifest — and follow the trail.
+                  </div>
+                  <div className="mt-1 text-xs text-text-400">
+                    Designed to reduce ambiguity during review — without making compliance claims.
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2">
@@ -725,6 +808,37 @@ Note: RRI is not scoring and does not imply compliance.`}
                   <LinkButton href="/trust-core" variant="primary">
                     Trust Core
                   </LinkButton>
+                </div>
+              </div>
+
+              {/* INSERTION POINT E — What to ask us for */}
+              <div className="mt-5 rounded-xl border border-border bg-surface-1 p-4">
+                <div className="text-xs text-text-300 evz-mono">WHAT TO ASK US FOR</div>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-text-300">
+                  <li>
+                    An example <span className="text-text-200 font-medium">evidence pack</span> (structure + contents,
+                    redacted)
+                  </li>
+                  <li>
+                    A sample <span className="text-text-200 font-medium">manifest</span> showing window boundaries +
+                    artifact hashes
+                  </li>
+                  <li>
+                    A walkthrough of the <span className="text-text-200 font-medium">review path</span>: source → record
+                    → file → gate
+                  </li>
+                  <li>
+                    A demo of <span className="text-text-200 font-medium">readiness gates</span> (what passes, what
+                    fails, and why)
+                  </li>
+                  <li>
+                    A clear statement of <span className="text-text-200 font-medium">boundaries</span> (what EcoVeraZ
+                    does not do)
+                  </li>
+                </ul>
+                <div className="mt-2 text-xs text-text-400">
+                  These requests are designed to reduce ambiguity during evaluation without implying certification or
+                  compliance outcomes.
                 </div>
               </div>
             </Card>

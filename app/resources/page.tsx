@@ -1,4 +1,6 @@
 // app/resources/page.tsx
+import * as React from "react";
+
 import { Section } from "@/components/layout/Section";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/ui/StatusBadge";
@@ -77,13 +79,35 @@ export default function ResourcesPage() {
                 Trust Core
               </LinkButton>
             </div>
+
+            {/* Jump strip (anchors) */}
+            <div className="mt-4 rounded-2xl border border-border bg-card/30 p-4">
+              <div className="text-xs text-text-300 evz-mono">JUMP TO</div>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <LinkButton href="#paths" variant="secondary">
+                  Review paths
+                </LinkButton>
+                <LinkButton href="#before-after" variant="secondary">
+                  Tangible benefits
+                </LinkButton>
+                <LinkButton href="#artifacts" variant="secondary">
+                  What we produce
+                </LinkButton>
+                <LinkButton href="#next" variant="secondary">
+                  Next steps
+                </LinkButton>
+                <LinkButton href="#contact" variant="secondary">
+                  Evaluator pack
+                </LinkButton>
+              </div>
+            </div>
           </div>
         </div>
       </Section>
 
       {/* EVALUATOR PATHS */}
       <Section className="bg-surface-2">
-        <div className="mb-6 max-w-3xl">
+        <div id="paths" className="mb-6 max-w-3xl scroll-mt-28">
           <h2 className="text-xl font-semibold text-text-100">
             Choose your review path
           </h2>
@@ -114,9 +138,97 @@ export default function ResourcesPage() {
         </div>
       </Section>
 
+      {/* BEFORE / AFTER (TANGIBLE BENEFITS) */}
+      <Section className="bg-bg-900">
+        <div id="before-after" className="mb-6 scroll-mt-28">
+          <div className="mb-3 flex flex-col gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <StatusBadge tone="neutral">Before</StatusBadge>
+              <StatusBadge tone="good">After</StatusBadge>
+              <StatusBadge tone="neutral">Tangible outcomes</StatusBadge>
+            </div>
+
+            <div className="max-w-3xl">
+              <h2 className="text-xl font-semibold text-text-100">
+                What changes in practice (before vs after)
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-text-300">
+                A plain-language view of why teams save time, avoid rework, and gain
+                trust during reviews. (Illustrative — depends on scope and governance.)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="Before EcoVeraZ"
+              subtitle="What reviews often look like without a traceable evidence system."
+              right={<StatusBadge tone="neutral">BEFORE</StatusBadge>}
+            />
+            <div className="px-5 pb-5 text-sm text-text-200">
+              <ul className="space-y-2">
+                <Bullet>Evidence lives across spreadsheets, emails, screenshots, and vendors</Bullet>
+                <Bullet>“Where did this come from?” triggers manual reconstruction</Bullet>
+                <Bullet>Time windows drift (different teams use different cutoffs)</Bullet>
+                <Bullet>Follow-up questions multiply because context is missing</Bullet>
+                <Bullet>Trust depends on individuals, not repeatable structure</Bullet>
+              </ul>
+            </div>
+          </Card>
+
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="With EcoVeraZ"
+              subtitle="What reviewers and operators get when evidence is packaged for inspection."
+              right={<StatusBadge tone="good">AFTER</StatusBadge>}
+            />
+            <div className="px-5 pb-5 text-sm text-text-200">
+              <ul className="space-y-2">
+                <Bullet>Evidence is delivered as a consistent pack (window + manifest + artifacts)</Bullet>
+                <Bullet>Review starts with: what’s included, from where, and for which period</Bullet>
+                <Bullet>Traceability reduces back-and-forth and subjective debates</Bullet>
+                <Bullet>Teams spend less time preparing “audit season” documents</Bullet>
+                <Bullet>Trust improves because the structure is repeatable across sites</Bullet>
+              </ul>
+            </div>
+          </Card>
+
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="So what does this save?"
+              subtitle="Tangible benefits stakeholders can feel."
+              right={<StatusBadge tone="neutral">IMPACT</StatusBadge>}
+            />
+            <div className="px-5 pb-5 text-sm text-text-200">
+              <ul className="space-y-2">
+                <Bullet>
+                  <span className="text-text-100">Time:</span> fewer cycles assembling proofs; faster reviewer orientation
+                </Bullet>
+                <Bullet>
+                  <span className="text-text-100">Money:</span> less paid rework, fewer “emergency” audit/consulting add-ons
+                </Bullet>
+                <Bullet>
+                  <span className="text-text-100">Trust:</span> clearer trail from source → file → claim reduces credibility risk
+                </Bullet>
+                <Bullet>
+                  <span className="text-text-100">Governance:</span> consistent windows + disclosures reduce ambiguity
+                </Bullet>
+              </ul>
+
+              <div className="mt-4 rounded-xl border border-border bg-surface-2 p-3 text-xs text-text-300 leading-relaxed">
+                Note: EcoVeraZ improves reviewability and integrity cues. It does{" "}
+                <span className="text-text-100">not</span> certify, score, or make external determinations.
+              </div>
+            </div>
+          </Card>
+        </div>
+      </Section>
+
       {/* REFERENCE / EXPLAINERS */}
       <Section className="bg-bg-900">
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div id="artifacts" className="grid gap-6 lg:grid-cols-2 scroll-mt-28">
           <Card className="rounded-2xl border border-border bg-card/40">
             <CardHeader
               title="What EcoVeraZ produces"
@@ -133,6 +245,7 @@ export default function ResourcesPage() {
           </Card>
 
           <Card className="rounded-2xl border border-border bg-card/40">
+            <div id="next" className="scroll-mt-28" />
             <CardHeader
               title="Where to go next"
               subtitle="Keep the journey simple and consistent."
@@ -171,6 +284,7 @@ export default function ResourcesPage() {
 
       {/* CONTACT */}
       <Section className="bg-surface-2">
+        <div id="contact" className="scroll-mt-28" />
         <Card className="rounded-2xl border border-border bg-card/40">
           <CardHeader
             title="Need an evaluator pack?"
@@ -181,6 +295,29 @@ export default function ResourcesPage() {
               If you’re reviewing EcoVeraZ for a program, a portfolio, or a site rollout,
               request a short evaluator walkthrough and the recommended proof path.
             </div>
+
+            {/* NEW: Tangible “what you’ll receive” checklist */}
+            <div className="mt-4 rounded-2xl border border-border bg-surface-1 p-4">
+              <div className="text-xs text-text-300 evz-mono">EVALUATOR PACK (WHAT YOU’LL RECEIVE)</div>
+              <ul className="mt-2 space-y-2 text-sm text-text-200">
+                <Bullet>
+                  A <span className="text-text-100 font-medium">redacted evidence pack example</span> (structure + contents)
+                </Bullet>
+                <Bullet>
+                  A sample <span className="text-text-100 font-medium">manifest</span> showing window boundaries + artifact list
+                </Bullet>
+                <Bullet>
+                  A short <span className="text-text-100 font-medium">review path walkthrough</span>: source → record → file → gate
+                </Bullet>
+                <Bullet>
+                  A clear <span className="text-text-100 font-medium">boundaries statement</span> (what EcoVeraZ does not claim)
+                </Bullet>
+              </ul>
+              <div className="mt-2 text-xs text-text-400">
+                Provided for evaluation and reviewability. Not certification, not scoring, and not an external determination.
+              </div>
+            </div>
+
             <div className="mt-4 flex flex-wrap gap-3">
               <LinkButton href="/contact" variant="primary">
                 Request a demo
