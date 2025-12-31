@@ -1,4 +1,4 @@
-﻿// app/page.tsx
+﻿﻿// app/page.tsx
 import { Section, Grid } from "@/components/layout/Section";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { MetricTile } from "@/components/ui/MetricTile";
@@ -114,14 +114,7 @@ function PipelineDiagram() {
             <g key={n.x}>
               <circle cx={n.x} cy="45" r="10" fill="currentColor" opacity="0.22" />
               <circle cx={n.x} cy="45" r="5" fill="currentColor" opacity="0.65" />
-              <text
-                x={n.x}
-                y="78"
-                textAnchor="middle"
-                fontSize="12"
-                fill="currentColor"
-                opacity="0.75"
-              >
+              <text x={n.x} y="78" textAnchor="middle" fontSize="12" fill="currentColor" opacity="0.75">
                 {n.label}
               </text>
             </g>
@@ -202,6 +195,54 @@ function FlowStep({
   );
 }
 
+function StartHereCard({
+  title,
+  subtitle,
+  bullets,
+  ctaHref,
+  ctaLabel,
+}: {
+  title: string;
+  subtitle: string;
+  bullets: string[];
+  ctaHref: string;
+  ctaLabel: string;
+}) {
+  return (
+    <Card>
+      <CardHeader title={title} subtitle={subtitle} right={<StatusBadge tone="neutral" mono>START</StatusBadge>} />
+      <ul className="mt-2 list-disc pl-5 text-sm text-text-300 space-y-1">
+        {bullets.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
+      </ul>
+      <div className="mt-4">
+        <LinkButton href={ctaHref} variant="secondary">
+          {ctaLabel}
+        </LinkButton>
+      </div>
+    </Card>
+  );
+}
+
+function ProofSnippet({ title, body }: { title: string; body: string }) {
+  return (
+    <Card>
+      <CardHeader
+        title={title}
+        subtitle="Illustrative format (redacted). Used to explain what reviewers can inspect."
+        right={<StatusBadge tone="neutral" mono>PROOF</StatusBadge>}
+      />
+      <pre className="mt-3 overflow-x-auto rounded-xl border border-border bg-surface-2 p-3 text-xs text-text-300 evz-mono leading-relaxed">
+        {body}
+      </pre>
+      <div className="mt-2 text-xs text-text-400">
+        Note: examples show structure, not customer data. EcoVeraZ does not certify or determine outcomes.
+      </div>
+    </Card>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -232,13 +273,23 @@ export default function HomePage() {
               Built on modern data integrity principles — scalable, traceable, and reviewer-friendly.
             </div>
 
-            {/* NEW: aspirational lift (quiet, non-hype) */}
-            <div className="mt-2 text-sm text-text-200 font-medium">
-              EcoVeraZ is building the evidence layer for the next decade of ESG oversight.
+            {/* NEW: fast-track summary for Netlify audiences */}
+            <div className="mt-4 rounded-xl border border-border bg-surface-2 p-4">
+              <div className="text-xs text-text-300 evz-mono">30-SECOND SUMMARY</div>
+              <div className="mt-2 text-sm text-text-300 leading-relaxed">
+                <span className="text-text-200 font-medium">You measure.</span> EcoVeraZ preserves the data,
+                packages review-ready files, and applies readiness gates — so reviewers can trace numbers back to
+                sources without last-minute reconstruction.
+              </div>
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <MetricTile label="What you get" value="Audit-ready files" note="structured for inspection" mono />
+                <MetricTile label="What it avoids" value="Spreadsheet scrambles" note="less manual compilation" mono />
+                <MetricTile label="How it stays safe" value="Clear boundaries" note="no certification / no outcomes" mono />
+              </div>
             </div>
 
             {/* Real-world anchor (1 sentence) */}
-            <p className="mt-3 text-sm text-text-300">
+            <p className="mt-4 text-sm text-text-300">
               Example: a building’s energy use, office air quality, or equipment activity — captured over time,
               organized month-by-month, and ready when a reviewer asks “show me the proof.”
             </p>
@@ -251,14 +302,20 @@ export default function HomePage() {
 
             {/* CTA labels updated, routes unchanged */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2">
-              <LinkButton href="/trust-core" variant="primary">
-                See how it works
+              <LinkButton href="/platform" variant="primary">
+                Platform overview
               </LinkButton>
-              <LinkButton href="/contact#general" variant="secondary">
-                Talk to us
+
+              {/* NEW: Dedicated value page (commercial, inviting) */}
+              <LinkButton href="/what-you-get" variant="secondary">
+                What you get
               </LinkButton>
-              <LinkButton href="/trust-core" variant="secondary">
-                See it in action
+
+              <LinkButton href="/resources" variant="secondary">
+                Review references
+              </LinkButton>
+              <LinkButton href="/contact#evaluation" variant="secondary">
+                Request evaluation
               </LinkButton>
             </div>
           </div>
@@ -283,6 +340,62 @@ export default function HomePage() {
               <MetricTile label="Time windows" value="CONTROLLED" note="clear month / period boundaries" mono />
               <MetricTile label="Optional proof" value="AVAILABLE" note="tamper-proof mode when needed" mono />
             </div>
+          </div>
+        </Grid>
+      </Section>
+
+      {/* NEW — Start here (Netlify-style guided onboarding) */}
+      <Section
+        title="Start here"
+        subtitle="Pick the path that matches your role. Each path is short, specific, and review-safe."
+        size="sm"
+      >
+        <Grid>
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <StartHereCard
+              title="Operations / EHS"
+              subtitle="Turn day-to-day conditions into evidence you can defend."
+              bullets={[
+                "Measure operational reality continuously",
+                "Avoid last-minute manual compilation",
+                "Surface high-signal readiness indicators",
+              ]}
+              ctaHref="/platform"
+              ctaLabel="See Platform flow"
+            />
+            <StartHereCard
+              title="ESG / Sustainability / Finance"
+              subtitle="Move from reporting to evidence that stands up to review."
+              bullets={[
+                "Use clear month / window boundaries",
+                "Package files for inspection and follow-ups",
+                "Reduce review friction and back-and-forth",
+              ]}
+              ctaHref="/resources"
+              ctaLabel="See review references"
+            />
+            <StartHereCard
+              title="Compliance / Audit"
+              subtitle="Understand Trust Core and the gates that prevent ambiguous evidence."
+              bullets={[
+                "Trust Core defines the boundaries (no certification)",
+                "RRI gates keep evidence review-ready",
+                "Verification surfaces support independent checks",
+              ]}
+              ctaHref="/trust-core"
+              ctaLabel="Open Trust Core"
+            />
+            <StartHereCard
+              title="Investors / Boards"
+              subtitle="See the defensibility posture and why restraint is a feature."
+              bullets={[
+                "Evidence posture, not outcome claims",
+                "Repeatable review flows across sites",
+                "Versioned doctrine to prevent drift",
+              ]}
+              ctaHref="/platform"
+              ctaLabel="Platform + governance view"
+            />
           </div>
         </Grid>
       </Section>
@@ -315,6 +428,55 @@ export default function HomePage() {
                 </div>
               </div>
             </Card>
+          </div>
+        </Grid>
+      </Section>
+
+      {/* NEW — Proof strip (Netlify people want “show me something real”) */}
+      <Section
+        title="What reviewers can actually inspect"
+        subtitle="Examples of evidence structure (redacted). These formats make reviews faster and calmer."
+        size="sm"
+      >
+        <Grid>
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <ProofSnippet
+              title="Evidence pack structure"
+              body={`EVIDENCE_PACK/
+  manifest.json
+  SHA256SUMS.txt
+  window.json
+  raw/
+    iaq_samples_2025-12.csv
+    energy_samples_2025-12.csv
+  derived/
+    summaries_2025-12.json
+  notes/
+    disclosures.md`}
+            />
+            <ProofSnippet
+              title="Manifest (excerpt)"
+              body={`{
+  "site_id": "SITE-001",
+  "window": { "start": "2025-12-01T00:00:00Z", "end": "2025-12-31T23:59:59Z" },
+  "sources": ["iaq_sensor_node_A", "energy_node_B"],
+  "artifacts": [
+    { "path": "raw/iaq_samples_2025-12.csv", "sha256": "…redacted…" },
+    { "path": "derived/summaries_2025-12.json", "sha256": "…redacted…" }
+  ]
+}`}
+            />
+            <ProofSnippet
+              title="RRI gate result (illustrative)"
+              body={`RRI (PASS/FAIL) — posture only
+
+Continuity: PASS
+Integrity:  PASS
+Lineage:    PASS
+Disclosure: PASS
+
+Note: RRI is not scoring and does not imply compliance.`}
+            />
           </div>
         </Grid>
       </Section>
@@ -472,104 +634,6 @@ export default function HomePage() {
         </Grid>
       </Section>
 
-      {/* Illustrative savings (multi-currency; symbols rendered in labels, values numeric for perfect glyph support) */}
-      <Section
-        title="Illustrative savings per reporting cycle"
-        subtitle="Simple examples (not promises). Actual results depend on scope, site count, and review requirements."
-        size="sm"
-      >
-        <Grid>
-          <div className="md:col-span-12">
-            {/* NEW: TL;DR line so numbers are optional, not required reading */}
-            <div className="mb-4 text-sm text-text-200 font-medium">
-              Teams often reclaim weeks of audit effort per cycle — because evidence is prepared continuously, not
-              rebuilt at the end.
-            </div>
-          </div>
-
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-            <Card>
-              <CardHeader title="Time saved" subtitle="Person-days you get back." />
-              <div className="text-sm text-text-300">
-                <div className="font-medium text-text-200">Example scenario:</div>
-                <div className="mt-2">
-                  Before: 6 people × 10 days ={" "}
-                  <span className="text-text-200 font-medium">60 person-days</span>
-                </div>
-                <div className="mt-1">
-                  With EcoVeraZ: 6 people × 4 days ={" "}
-                  <span className="text-text-200 font-medium">24 person-days</span>
-                </div>
-                <div className="mt-2">
-                  Illustrative savings:{" "}
-                  <span className="text-text-200 font-medium">36 person-days</span> per cycle
-                </div>
-                <div className="mt-2 text-xs text-text-400">
-                  Why plausible: audit-ready files + a clear data trail reduce manual compilation and follow-ups.
-                </div>
-              </div>
-            </Card>
-
-            <Card>
-              <CardHeader title="Cost avoided" subtitle="Manual consolidation / external support." />
-              <div className="text-sm text-text-300">
-                <div>
-                  If a cycle costs <span className="text-text-200 font-medium">$10k–$25k</span> in internal time /
-                  external support, reducing effort by 30–50% can avoid:
-                </div>
-
-                <div className="mt-3 rounded-xl border border-border bg-surface-2 p-3">
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-                    <div className="text-text-300">USD ($)</div>
-                    <div className="text-text-200 font-medium evz-mono tabular-nums">$3,000–$12,500</div>
-
-                    <div className="text-text-300">EUR (€)</div>
-                    <div className="text-text-200 font-medium evz-mono tabular-nums">2.55k–10.64k</div>
-
-                    <div className="text-text-300">AED</div>
-                    <div className="text-text-200 font-medium evz-mono tabular-nums">11.02k–45.91k</div>
-
-                    <div className="text-text-300">SAR</div>
-                    <div className="text-text-200 font-medium evz-mono tabular-nums">11.25k–46.89k</div>
-
-                    <div className="text-text-300">JPY (¥)</div>
-                    <div className="text-text-200 font-medium evz-mono tabular-nums">469k–1.955M</div>
-
-                    <div className="text-text-300">INR (₹)</div>
-                    <div className="text-text-200 font-medium evz-mono tabular-nums">2.69L–11.23L</div>
-                  </div>
-
-                  <div className="mt-3 text-xs text-text-400">
-                    Values are shown without currency symbols to avoid font-glyph breakage in mono type.
-                    Currency symbols remain in the labels.
-                  </div>
-                </div>
-
-                <div className="mt-2 text-xs text-text-400">
-                  These are illustrative conversions of the same USD range (approx; mid-market rates vary daily).
-                </div>
-              </div>
-            </Card>
-
-            <Card>
-              <CardHeader title="Trust saved" subtitle="Less review friction." />
-              <div className="text-sm text-text-300">
-                <div>Audits slow down when reviewers can’t trace numbers back to the source.</div>
-                <div className="mt-2">EcoVeraZ reduces friction by keeping:</div>
-                <ul className="mt-2 list-disc pl-5">
-                  <li>clear time windows (what’s included)</li>
-                  <li>a data trail (where numbers came from)</li>
-                  <li>review gates (what was checked)</li>
-                </ul>
-                <div className="mt-2">
-                  Result: faster sign-off conversations and fewer “please explain this number” loops.
-                </div>
-              </div>
-            </Card>
-          </div>
-        </Grid>
-      </Section>
-
       {/* Section 4 — Verification (kept, but compact) */}
       <Section
         title="Verification signals"
@@ -659,7 +723,7 @@ export default function HomePage() {
                     Request evaluation
                   </LinkButton>
                   <LinkButton href="/trust-core" variant="primary">
-                    See how it works
+                    Trust Core
                   </LinkButton>
                 </div>
               </div>

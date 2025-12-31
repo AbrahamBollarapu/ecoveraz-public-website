@@ -82,6 +82,28 @@ export default function TrustCorePage() {
             <Pill>Last updated: {TRUST_CORE_LAST_UPDATED}</Pill>
             <Pill>Public canonical bundle</Pill>
           </div>
+
+          {/* ===================================================== */}
+          {/* Orientation paragraph — clarity overlay (ONLY ADDITION) */}
+          {/* ===================================================== */}
+          <div className="mt-6 rounded-xl border border-border bg-card/40 p-4">
+            <div className="text-xs uppercase tracking-wide text-muted mb-2">
+              How to read this page
+            </div>
+            <p className="text-sm text-muted leading-relaxed">
+              This page explains how EcoVeraZ treats ESG data as reviewable
+              evidence — not just metrics or reports. It describes the
+              principles, controls, and boundaries used so ESG information can be
+              inspected, traced to its source, and evaluated by independent
+              reviewers.
+            </p>
+            <p className="mt-2 text-sm text-muted leading-relaxed">
+              Trust Core is not a promise of compliance or certification. It is a
+              transparent description of how evidence is collected, prepared,
+              and governed so audits and oversight can be calm, repeatable, and
+              defensible.
+            </p>
+          </div>
         </Card>
       </Section>
 

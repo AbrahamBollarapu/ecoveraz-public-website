@@ -31,10 +31,12 @@ function JourneyStep({ title, body }: { title: string; body: string }) {
 export default function InvestorPage() {
   return (
     <>
+      {/* HERO */}
       <Section>
         <Grid>
+          {/* Main */}
           <div className="md:col-span-8">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <StatusBadge tone="neutral" mono>
                 INVESTOR ACCESS
               </StatusBadge>
@@ -43,27 +45,27 @@ export default function InvestorPage() {
               </StatusBadge>
             </div>
 
-            <h1 className="mt-4 text-3xl font-semibold tracking-tight text-text-100">
+            <h1 className="mt-4 text-2xl md:text-3xl font-semibold tracking-tight text-text-100">
               EcoVeraZ — Investor Access
             </h1>
 
-            <p className="mt-3 max-w-2xl text-base leading-relaxed text-text-300">
+            <p className="mt-3 max-w-2xl text-sm md:text-base leading-relaxed text-text-300">
               EcoVeraZ is evidence infrastructure for external review. We convert
               operational measurements into verifiable, review-ready artifacts
               suitable for oversight, audit, and governance workflows.
             </p>
 
-            <p className="mt-2 max-w-2xl text-base leading-relaxed text-text-300">
+            <p className="mt-2 max-w-2xl text-sm md:text-base leading-relaxed text-text-300">
               This page provides controlled access for institutional investors
               seeking diligence-grade materials.
             </p>
 
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-text-300">
+            <p className="mt-3 max-w-2xl text-xs md:text-sm leading-relaxed text-text-400">
               EcoVeraZ does not certify, approve, score, or determine compliance.
               Conclusions remain external (audit, risk, regulators).
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <LinkButton href="/contact#evaluation" variant="secondary">
                 Request a demo
               </LinkButton>
@@ -73,14 +75,15 @@ export default function InvestorPage() {
             </div>
           </div>
 
-          <div className="md:col-span-4">
+          {/* Sidebar / moves below on mobile */}
+          <div className="md:col-span-4 mt-6 md:mt-0">
             <Card>
               <CardHeader
                 title="Request Secure Investor Access"
                 subtitle="Institutional investors may request confidential materials and live demonstrations."
               />
-              <div className="p-4 pt-0">
-                <div className="rounded-md border border-border-600/60 bg-transparent p-3">
+              <div className="p-4 pt-0 space-y-3">
+                <div className="rounded-md border border-border-600/60 p-3">
                   <div className="text-xs font-medium text-text-300">
                     Primary email
                   </div>
@@ -89,7 +92,7 @@ export default function InvestorPage() {
                   </div>
                 </div>
 
-                <div className="mt-3 rounded-md border border-border-600/60 bg-transparent p-3">
+                <div className="rounded-md border border-border-600/60 p-3">
                   <div className="text-xs font-medium text-text-300">
                     Alternate email
                   </div>
@@ -98,8 +101,8 @@ export default function InvestorPage() {
                   </div>
                 </div>
 
-                <p className="mt-3 text-xs leading-relaxed text-text-400">
-                  Additional materials are shared under NDA / confidentiality
+                <p className="text-xs leading-relaxed text-text-400">
+                  Materials are shared selectively under NDA / confidentiality
                   terms where applicable.
                 </p>
               </div>
@@ -108,37 +111,38 @@ export default function InvestorPage() {
         </Grid>
       </Section>
 
+      {/* JOURNEY */}
       <Section
         title="Measurement → Evidence → Certificate"
-        subtitle="An architecture designed to eliminate evidentiary risk before capital or compliance exposure."
+        subtitle="How EcoVeraZ removes evidentiary risk before capital or compliance exposure."
       >
         <Grid>
           <div className="md:col-span-12">
             <Card>
               <CardHeader
-                title="How EcoVeraZ turns reality into proof"
-                subtitle="Short form, consistent with the rest of the site."
+                title="From reality to proof"
+                subtitle="Consistent with platform and compliance narratives."
               />
               <div className="p-4 pt-0 grid grid-cols-1 gap-4 md:grid-cols-5">
                 <JourneyStep
                   title="Sensors & devices"
-                  body="Operational signals are captured continuously with time + context."
+                  body="Operational signals captured with time and context."
                 />
                 <JourneyStep
                   title="Raw measurements"
-                  body="Original measurements are preserved and bounded to defined windows."
+                  body="Preserved and bounded to declared windows."
                 />
                 <JourneyStep
-                  title="Evidence & audit packs"
-                  body="Deterministic artifacts (manifests, checksums, references) are generated for review."
+                  title="Evidence artifacts"
+                  body="Deterministic audit packs with references."
                 />
                 <JourneyStep
                   title="Governance posture"
-                  body="Continuity, integrity, and lineage signals support oversight without overclaiming."
+                  body="Continuity, integrity, and lineage signals."
                 />
                 <JourneyStep
-                  title="Certificates & verification"
-                  body="Certificates become outcomes, backed by evidence and verifiable surfaces."
+                  title="Certificates"
+                  body="Outcomes backed by verifiable evidence."
                 />
               </div>
             </Card>
@@ -146,57 +150,39 @@ export default function InvestorPage() {
         </Grid>
       </Section>
 
+      {/* MATERIALS */}
       <Section>
         <Grid>
           <div className="md:col-span-7">
             <Card>
               <CardHeader
-                title="What’s available to verified investors"
-                subtitle="A structured set of materials aligned to review and oversight requirements."
+                title="What verified investors can access"
+                subtitle="Structured, diligence-grade materials."
               />
               <div className="p-4 pt-0 space-y-4">
-                <Item
-                  title="Investor pitch deck (current version)"
-                  body="Problem, market inflection, category framing, and narrative logic."
-                />
-                <Item
-                  title="Platform architecture & evidence chain overview"
-                  body="Sensors → ingestion → analytics → audit pack → verification, with governance controls."
-                />
-                <Item
-                  title="Regulatory alignment summary"
-                  body="EU CSRD, US SEC climate, ISSB, India BRSR — mapping notes and boundary statements."
-                />
-                <Item
-                  title="Pilot deployments & validation notes (sanitized)"
-                  body="Deployment learnings and outcomes suitable for investor review."
-                />
-                <Item
-                  title="IP & patent landscape summary"
-                  body="Differentiation, defensibility posture, and roadmap for filings."
-                />
+                <Item title="Investor pitch deck" body="Narrative, market, and category framing." />
+                <Item title="Platform & evidence architecture" body="End-to-end evidence chain overview." />
+                <Item title="Regulatory alignment notes" body="CSRD, SEC Climate, ISSB, BRSR mappings." />
+                <Item title="Pilot deployments" body="Sanitized validation outcomes." />
+                <Item title="IP & patent posture" body="Defensibility and filing roadmap." />
               </div>
             </Card>
           </div>
 
-          <div className="md:col-span-5">
+          <div className="md:col-span-5 mt-6 md:mt-0">
             <Card>
-              <CardHeader
-                title="Confidentiality"
-                subtitle="How we share sensitive information."
-              />
-              <div className="p-4 pt-0 space-y-3 text-sm text-text-300 leading-relaxed">
+              <CardHeader title="Confidentiality" subtitle="How sensitive information is handled." />
+              <div className="p-4 pt-0 text-sm text-text-300 leading-relaxed space-y-2">
                 <p>
-                  We do not publish financial models, customer-sensitive
-                  telemetry, or detailed technical specifications publicly.
+                  Financial models, customer telemetry, and deep technical
+                  internals are never published publicly.
                 </p>
                 <p>
-                  Access is provided selectively to qualified investors and
-                  partners, with NDA / data handling terms as needed.
+                  Access is granted selectively to qualified investors and
+                  partners.
                 </p>
                 <div className="mt-2 rounded-lg border border-border-600 bg-surface-900/40 p-3 text-xs text-text-400">
-                  Confidential &amp; proprietary. © EcoVeraZ, Inc. All rights
-                  reserved.
+                  Confidential &amp; proprietary. © EcoVeraZ, Inc.
                 </div>
               </div>
             </Card>

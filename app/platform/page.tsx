@@ -1,473 +1,211 @@
-﻿// app/platform/page.tsx
-import Link from "next/link";
-
-import { Section, Grid } from "@/components/layout/Section";
+// app/platform/page.tsx
+import { Section } from "@/components/layout/Section";
 import { Card, CardHeader } from "@/components/ui/Card";
-import { MetricTile } from "@/components/ui/MetricTile";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { LinkButton } from "@/components/ui/Button";
-import { KpiRow } from "@/components/ui/KpiRow";
 
-import { ChartCard } from "@/components/charts/ChartCard";
-import { OperationalTrendChart } from "@/components/charts/OperationalTrendChart";
-import { OPERATIONAL_TREND_24H } from "@/lib/mock-chart";
-
-function LayerCard({
-  label,
-  title,
-  trustGap,
-  bullets,
-}: {
-  label: string;
-  title: string;
-  trustGap: string;
-  bullets: string[];
-}) {
+function Bullet({ children }: { children: React.ReactNode }) {
   return (
-    <Card>
-      <div className="flex items-start justify-between gap-4">
-        <div className="text-sm text-text-300 evz-mono">{label}</div>
-        <StatusBadge tone="neutral" mono>
-          LAYER
-        </StatusBadge>
-      </div>
-
-      <div className="mt-3 text-base font-semibold text-text-100">{title}</div>
-
-      <div className="mt-2 text-sm text-text-300">
-        <span className="text-text-200">Eliminates trust gap:</span> {trustGap}
-      </div>
-
-      {/* Mobile executive rule: hide dense bullet lists; show from tablet up */}
-      <ul className="mt-3 hidden list-disc gap-1 pl-5 text-sm text-text-300 sm:grid">
-        {bullets.map((b) => (
-          <li key={b}>{b}</li>
-        ))}
-      </ul>
-    </Card>
+    <li className="flex gap-2">
+      <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-text-300" />
+      <span className="leading-relaxed">{children}</span>
+    </li>
   );
 }
 
-function ModuleCard({
-  title,
-  body,
-  href,
-  badge,
-}: {
-  title: string;
-  body: string;
-  href: string;
-  badge?: string;
-}) {
+function MiniTile({ label, value }: { label: string; value: string }) {
   return (
-    <Card>
-      <CardHeader
-        title={title}
-        subtitle={body}
-        right={
-          badge ? (
-            <StatusBadge tone="neutral" mono>
-              {badge}
-            </StatusBadge>
-          ) : null
-        }
-      />
-
-      <div className="mt-3">
-        <Link
-          href={href}
-          className="inline-flex items-center gap-1 text-sm text-accent-400 hover:text-accent-500 transition-colors"
-        >
-          View module <span aria-hidden>→</span>
-        </Link>
-      </div>
-    </Card>
+    <div className="rounded-2xl border border-border bg-card/40 px-4 py-3">
+      <div className="text-xs text-text-300">{label}</div>
+      <div className="mt-1 text-sm font-semibold text-text-100">{value}</div>
+    </div>
   );
 }
 
 export default function PlatformPage() {
   return (
-    <>
-      {/* Hero */}
-      <Section size="lg">
-        <Grid>
-          <div className="md:col-span-7">
-            <div className="text-3xl font-semibold text-text-100">
-              Platform overview
-            </div>
+    <main className="bg-bg-900 text-text-100">
+      {/* HERO */}
+      <Section className="bg-bg-900">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-wrap items-center gap-2">
+            <StatusBadge tone="good">Audit-safe</StatusBadge>
+            <StatusBadge tone="neutral">Evidence-first</StatusBadge>
+            <StatusBadge tone="neutral">Instrumentation-led</StatusBadge>
+          </div>
 
-            <div className="mt-4 text-lg text-text-200">
-              EcoVeraZ is an operational evidence infrastructure that turns
-              measurements into preserved evidence, governance-ready signals, and
-              externally verifiable outputs.
+          <div className="max-w-3xl">
+            <div className="text-sm text-text-300">
+              Platform — ESG evidence infrastructure
             </div>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-text-100">
+              An evidence layer for operations, safety, and sustainability
+            </h1>
+            <p className="mt-3 text-base leading-relaxed text-text-200">
+              EcoVeraZ turns real-world operational signals into{" "}
+              <span className="text-text-100">review-ready evidence</span>. It is
+              not a certifier and does not promise outcomes — it produces
+              visibility, traceability, and consistent artifacts so teams can
+              move faster with less rework.
+            </p>
 
-            <div className="mt-4 text-sm text-text-300">
-              Built for review contexts: oversight, audit readiness, and
-              defensible reporting workflows.
-            </div>
-
-            {/* Mobile executive rule: demote boundary note on mobile only */}
-            <div className="mt-3 text-xs text-text-400 md:text-sm md:text-text-300">
-              Boundary: EcoVeraZ does not certify, approve, rate, or determine
-              regulatory compliance. Determinations remain external.
-            </div>
-
-            {/* Mobile executive rule: more breathing room + stack CTAs on mobile */}
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2">
-              <LinkButton href="/trust-core" variant="primary">
-                Trust Core
+            <div className="mt-5 flex flex-wrap gap-3">
+              <LinkButton href="/what-you-get" variant="primary">
+                What you get
               </LinkButton>
-              <LinkButton href="/resources" variant="secondary">
-                View resources
+              <LinkButton href="/modules" variant="secondary">
+                Modules
+              </LinkButton>
+              <LinkButton href="/walkthroughs" variant="secondary">
+                Proof walkthroughs
               </LinkButton>
             </div>
           </div>
 
-          <div className="md:col-span-5">
-            <div className="grid grid-cols-1 gap-3">
-              <MetricTile
-                label="Evidence posture"
-                value="Preserved"
-                note="no re-generation by design"
-                mono
-              />
-              <MetricTile
-                label="Review readiness"
-                value="GATED"
-                note="rules before outputs"
-                mono
-              />
-              <MetricTile
-                label="Verification"
-                value="Receipt-based"
-                note="external verification surfaces"
-                mono
-              />
+          <div className="grid gap-4 md:grid-cols-3">
+            <MiniTile label="Visibility" value="Continuous operational signals" />
+            <MiniTile label="Evidence" value="Review-ready artifacts" />
+            <MiniTile label="Trust" value="Bounded, defensible claims" />
+          </div>
+        </div>
+      </Section>
+
+      {/* WHAT IT IS */}
+      <Section className="bg-surface-2">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="What EcoVeraZ is"
+              subtitle="An infrastructure layer that makes evidence a system output."
+            />
+            <div className="px-5 pb-5 text-sm text-text-200">
+              <ul className="space-y-2">
+                <Bullet>Instrumentation-led visibility across sites and assets</Bullet>
+                <Bullet>Traceable data paths (what, when, where)</Bullet>
+                <Bullet>Evidence artifacts designed for review and oversight</Bullet>
+                <Bullet>Operational framing: safety, productivity, sustainability</Bullet>
+              </ul>
             </div>
-          </div>
-        </Grid>
+          </Card>
+
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="What EcoVeraZ is not"
+              subtitle="Clear boundaries keep language audit-safe."
+            />
+            <div className="px-5 pb-5 text-sm text-text-200">
+              <ul className="space-y-2">
+                <Bullet>Not a certification body</Bullet>
+                <Bullet>No promises of compliance outcomes</Bullet>
+                <Bullet>No claims of audit approval</Bullet>
+                <Bullet>External determination remains external</Bullet>
+              </ul>
+            </div>
+          </Card>
+        </div>
       </Section>
 
-      {/* Phase-2 — Layer reframing */}
-      <Section
-        title="Platform layers"
-        subtitle="From measurement to certificate — without trust gaps."
-      >
-        <Grid>
-          {/* Mobile: 1 col; Tablet: 2 cols; Desktop: 4 cols */}
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
-            <LayerCard
-              label="01"
-              title="Instrumentation"
-              trustGap="Unverifiable reality capture"
-              bullets={[
-                "Deployed sensors & devices capture physical conditions",
-                "Time-bound measurement windows",
-                "Context + identity for each measurement stream",
-              ]}
+      {/* CORE CAPABILITIES */}
+      <Section className="bg-bg-900">
+        <div className="mb-6 max-w-3xl">
+          <h2 className="text-xl font-semibold text-text-100">Core capabilities</h2>
+          <p className="mt-2 text-sm leading-relaxed text-text-300">
+            These are expressed as modules on the next page. Here we keep it
+            outcome-oriented and non-technical.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="Signals → visibility"
+              subtitle="Turn site signals into consistent operational views."
             />
-            <LayerCard
-              label="02"
-              title="Evidence"
-              trustGap="Evidence that cannot be reproduced or traced"
-              bullets={[
-                "Raw + derived data handled as evidence artifacts",
-                "Deterministic generation for repeatability",
-                "Cryptographic fingerprints for integrity checks",
-              ]}
+            <div className="px-5 pb-5 text-sm text-text-200">
+              <ul className="space-y-2">
+                <Bullet>Continuous monitoring across time windows</Bullet>
+                <Bullet>Early signal detection for abnormal conditions</Bullet>
+                <Bullet>Clear context: site, asset, and timestamp</Bullet>
+              </ul>
+            </div>
+          </Card>
+
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="Visibility → evidence"
+              subtitle="Make review-ready artifacts a standard output."
             />
-            <LayerCard
-              label="03"
-              title="Governance"
-              trustGap="Outputs produced before review rules are satisfied"
-              bullets={[
-                "Completeness rules and review gates",
-                "Continuity + integrity signals surfaced for oversight",
-                "Optional anchoring when required (receipt issuance)",
-              ]}
+            <div className="px-5 pb-5 text-sm text-text-200">
+              <ul className="space-y-2">
+                <Bullet>Consistent labeling and references</Bullet>
+                <Bullet>Exportable packs for defined windows</Bullet>
+                <Bullet>Integrity cues and traceability</Bullet>
+              </ul>
+            </div>
+          </Card>
+
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="Evidence → oversight"
+              subtitle="Support portfolio and program oversight without hype."
             />
-            <LayerCard
-              label="04"
-              title="Verification"
-              trustGap="Claims that cannot be independently verified"
-              bullets={[
-                "Certificates tied to preserved evidence (outcome, not input)",
-                "Receipts enable external verification",
-                "Public verification surfaces for trust transfer",
-              ]}
-            />
-          </div>
-        </Grid>
+            <div className="px-5 pb-5 text-sm text-text-200">
+              <ul className="space-y-2">
+                <Bullet>Comparability across sites and vendors</Bullet>
+                <Bullet>Repeatable review workflows</Bullet>
+                <Bullet>Bounded claims with evidence links</Bullet>
+              </ul>
+            </div>
+          </Card>
+        </div>
       </Section>
 
-      {/* Evidence layer — snapshot */}
-      <Section
-        title="Evidence snapshot"
-        subtitle="Representative operational signal and evidence indicators."
-      >
-        <Grid>
-          {/* Desktop/Tablet chart: hide on mobile (executive summary rule) */}
-          <div className="hidden md:block md:col-span-8">
-            <ChartCard
-              title="Operational trend (example)"
-              subtitle="Representative signal for continuity review."
-              windowLabel="24H"
-              note="Threshold bands indicate acceptable operational range."
-            >
-              <OperationalTrendChart
-                data={OPERATIONAL_TREND_24H}
-                thresholdLow={68}
-                thresholdHigh={80}
-              />
-            </ChartCard>
-          </div>
-
-          {/* Mobile summary card instead of chart */}
-          <div className="md:hidden">
-            <Card>
-              <CardHeader
-                title="Operational trend (summary)"
-                subtitle="Executive view — full trend available on tablet/desktop."
-              />
-              <div className="grid grid-cols-1 gap-3">
-                <MetricTile
-                  label="Window"
-                  value="24H"
-                  note="representative trend window"
-                  mono
-                />
-                <MetricTile
-                  label="Continuity"
-                  value="OK"
-                  note="coverage stability indicator"
-                  mono
-                />
-                <MetricTile
-                  label="Policy bands"
-                  value="ACTIVE"
-                  note="threshold bands applied"
-                  mono
-                />
+      {/* NEXT STEPS */}
+      <Section className="bg-surface-2">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="Explore modules"
+              subtitle="Understand capabilities by what they do and what evidence they produce."
+            />
+            <div className="px-5 pb-5">
+              <div className="text-sm text-text-200 leading-relaxed">
+                Modules are the clean, composable building blocks of EcoVeraZ —
+                presented without architecture or API detail.
               </div>
-            </Card>
-          </div>
-
-          <div className="md:col-span-4">
-            <Card>
-              <CardHeader
-                title="Evidence indicators"
-                subtitle="High-signal flags used in governance and review."
-              />
-              <div className="grid grid-cols-1 gap-3">
-                <MetricTile
-                  label="Continuity"
-                  value="OK"
-                  note="window coverage check"
-                  mono
-                />
-                <MetricTile
-                  label="Integrity checks"
-                  value="Enabled"
-                  note="consistency validation"
-                  mono
-                />
-                <MetricTile
-                  label="Optional anchoring"
-                  value="Configurable"
-                  note="receipt mode when required"
-                  mono
-                />
+              <div className="mt-4 flex flex-wrap gap-3">
+                <LinkButton href="/modules" variant="primary">
+                  View Modules
+                </LinkButton>
+                <LinkButton href="/what-you-get" variant="secondary">
+                  Value framing
+                </LinkButton>
               </div>
-            </Card>
-          </div>
-        </Grid>
-      </Section>
+            </div>
+          </Card>
 
-      {/* Governance layer — enforcement posture */}
-      <Section
-        title="Governance"
-        subtitle="Rules before outputs. Oversight before claims."
-      >
-        <Grid>
-          {/* Mobile: 1 col; Tablet: 2 cols; Desktop: 4 cols */}
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
-            <Card>
-              <CardHeader
-                title="Review readiness"
-                subtitle="Completeness gates applied before outputs."
-              />
-              <KpiRow label="Mode" value="Gated" mono />
-              <KpiRow
-                label="Posture"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    CONTROLLED
-                  </StatusBadge>
-                }
-              />
-            </Card>
-
-            <Card>
-              <CardHeader
-                title="Continuity"
-                subtitle="Coverage stability within defined windows."
-              />
-              <KpiRow label="Window" value="24h" mono />
-              <KpiRow
-                label="Status"
-                value={
-                  <StatusBadge tone="good" mono>
-                    OK
-                  </StatusBadge>
-                }
-              />
-            </Card>
-
-            <Card>
-              <CardHeader
-                title="Integrity"
-                subtitle="Consistency checks across evidence handling."
-              />
-              <KpiRow label="Checks" value="Enabled" mono />
-              <KpiRow
-                label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    AVAILABLE
-                  </StatusBadge>
-                }
-              />
-            </Card>
-
-            <Card>
-              <CardHeader
-                title="Receipts"
-                subtitle="Receipt surfaces enable independent verification."
-              />
-              <KpiRow label="Posture" value="Receipt-based" mono />
-              <KpiRow
-                label="Status"
-                value={
-                  <StatusBadge tone="neutral" mono>
-                    VERIFIABLE
-                  </StatusBadge>
-                }
-              />
-            </Card>
-          </div>
-        </Grid>
-      </Section>
-
-      {/* Modules */}
-      <Section title="Modules" subtitle="Composable capabilities grouped by layer.">
-        <Grid>
-          {/* Mobile: 1 col; Tablet: 2 cols; Desktop: 3 cols */}
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-            <ModuleCard
-              title="Evidence lineage"
-              body="Traceability across transformations and aggregation."
-              href="/modules/evidence-lineage"
-              badge="EVIDENCE"
+          <Card className="rounded-2xl border border-border bg-card/40">
+            <CardHeader
+              title="See the proof journey"
+              subtitle="Walkthroughs show the evidence trail end-to-end."
             />
-            <ModuleCard
-              title="Verification endpoints"
-              body="Receipt surfaces used in review and external verification contexts."
-              href="/modules/verification-endpoints"
-              badge="VERIFICATION"
-            />
-            <ModuleCard
-              title="Artifact outputs"
-              body="Deterministic evidence artifacts suitable for review."
-              href="/modules/artifact-outputs"
-              badge="EVIDENCE"
-            />
-            <ModuleCard
-              title="Governance signals"
-              body="Readiness gates and oversight indicators."
-              href="/modules/governance-signals"
-              badge="GOVERNANCE"
-            />
-            <ModuleCard
-              title="Alignment workflows"
-              body="Downstream ESG-aligned workflows expressed through outputs and evidence handling."
-              href="/modules/alignment-workflows"
-              badge="VERIFICATION"
-            />
-            <ModuleCard
-              title="Optional anchoring"
-              body="Cryptographic proof when required by policy or counterparties."
-              href="/modules/optional-anchoring"
-              badge="GOVERNANCE"
-            />
-          </div>
-        </Grid>
-      </Section>
-
-      {/* Where EcoVeraZ fits */}
-      <Section
-        title="Where EcoVeraZ fits"
-        subtitle="Operations first, then evidence, then governance, then verification."
-      >
-        <Grid>
-          {/* Mobile: 1 col; Tablet+: 2 cols */}
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <Card>
-              <CardHeader
-                title="Operations-first"
-                subtitle="Measurement is the source of truth."
-              />
-              <div className="text-sm text-text-300">
-                EcoVeraZ starts with time-bound operational measurements and
-                preserves them as evidence, instead of beginning with claims or
-                reporting outputs.
+            <div className="px-5 pb-5">
+              <div className="text-sm text-text-200 leading-relaxed">
+                If you want the simplest demonstration path, start with
+                walkthroughs and then return to modules for the capability map.
               </div>
-            </Card>
-
-            <Card>
-              <CardHeader
-                title="Downstream alignment"
-                subtitle="Supports ESG-aligned workflows after operational context is established."
-              />
-              <div className="text-sm text-text-300">
-                Alignment is expressed through outputs and evidence handling. It
-                does not imply certification or regulatory approval.
+              <div className="mt-4 flex flex-wrap gap-3">
+                <LinkButton href="/walkthroughs" variant="primary">
+                  Proof walkthroughs
+                </LinkButton>
+                <LinkButton href="/resources" variant="secondary">
+                  Review references
+                </LinkButton>
               </div>
-            </Card>
-          </div>
-        </Grid>
+            </div>
+          </Card>
+        </div>
       </Section>
-
-      {/* Conversion band */}
-      <Section>
-        <Grid>
-          <div className="md:col-span-12">
-            <Card>
-              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div>
-                  <div className="text-base font-semibold text-text-100">
-                    Explore the measurement → evidence → verification chain.
-                  </div>
-                  <div className="mt-1 text-sm text-text-300">
-                    Layered trust by design. External determinations remain
-                    external.
-                  </div>
-                </div>
-
-                {/* Mobile: stack buttons for ergonomics */}
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2">
-                  <LinkButton href="mailto:contact@ecoveraz.com" variant="secondary">
-                    Email EcoVeraZ
-                  </LinkButton>
-                  <LinkButton href="/trust-core" variant="primary">
-                    Trust Core
-                  </LinkButton>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </Grid>
-      </Section>
-    </>
+    </main>
   );
 }
