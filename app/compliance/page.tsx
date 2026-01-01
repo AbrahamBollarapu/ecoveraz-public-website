@@ -149,10 +149,6 @@ export default function CompliancePage() {
                 Trust Core
               </Link>
               {" · "}
-              <Link href="/doctrine" className="text-text-200 underline underline-offset-4">
-                Doctrine
-              </Link>
-              {" · "}
               <Link href="/ladder" className="text-text-200 underline underline-offset-4">
                 Evidence Ladder
               </Link>
@@ -280,7 +276,7 @@ export default function CompliancePage() {
 
       {/* Section — Operating Doctrine (Regulator Anchor) */}
       <Section
-        title="Operating doctrine"
+        title="Operating principles"
         subtitle="Regulator-safe definitions, boundaries, and responsibilities."
       >
         <Grid>

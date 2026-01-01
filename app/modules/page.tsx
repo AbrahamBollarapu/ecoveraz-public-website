@@ -129,12 +129,11 @@ export default function ModulesPage() {
           <div className="max-w-3xl">
             <div className="text-sm text-text-300">Delivery model</div>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-text-100">
-              Composable modules for evidence-first operations
+              What EcoVeraZ Produces
             </h1>
             <p className="mt-3 text-base leading-relaxed text-text-200">
-              EcoVeraZ is delivered as modular capabilities — each one produces a
-              clear type of evidence and supports a specific operational outcome.
-              This page avoids architecture and jargon on purpose: it’s about{" "}
+              EcoVeraZ is delivered as capabilities that produce specific, review-ready
+              outputs. This page stays intentionally practical: it’s about{" "}
               <span className="text-text-100">what teams get</span> and{" "}
               <span className="text-text-100">what evidence is produced</span>.
             </p>
@@ -154,10 +153,10 @@ export default function ModulesPage() {
         </div>
       </Section>
 
-      {/* Modules grid */}
+      {/* Outputs grid */}
       <Section className="bg-surface-2">
         <div className="mb-6 max-w-3xl">
-          <h2 className="text-xl font-semibold text-text-100">Modules</h2>
+          <h2 className="text-xl font-semibold text-text-100">Outputs (by capability)</h2>
           <p className="mt-2 text-sm leading-relaxed text-text-300">
             Every module below is framed as{" "}
             <span className="text-text-200">visibility + evidence</span>. Any
@@ -222,8 +221,8 @@ export default function ModulesPage() {
                 <li className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-text-300" />
                   <span>
-                    Then <span className="text-text-100">Modules</span>{" "}
-                    (capabilities + evidence produced).
+                    Then <span className="text-text-100">What EcoVeraZ Produces</span>{" "}
+                    (outputs + evidence produced).
                   </span>
                 </li>
                 <li className="flex gap-2">

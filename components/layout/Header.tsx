@@ -31,14 +31,7 @@ function isActive(pathname: string, href: string) {
 
 function LockIcon() {
   return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      className="text-text-300"
-      aria-hidden="true"
-    >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-text-300" aria-hidden="true">
       <path d="M7 11V8a5 5 0 0110 0v3" stroke="currentColor" strokeWidth="1.8" />
       <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.8" />
     </svg>
@@ -64,13 +57,7 @@ function ChevronDownIcon({ open }: { open: boolean }) {
 function Logo() {
   return (
     <div className="flex items-center gap-3">
-      <Image
-        src="/logo.png"
-        alt="EcoVeraZ"
-        width={140}
-        height={28}
-        priority
-      />
+      <Image src="/logo.png" alt="EcoVeraZ" width={140} height={28} priority />
       <span className="sr-only">EcoVeraZ</span>
     </div>
   );
@@ -97,48 +84,42 @@ function navPillClasses(active: boolean) {
   ].join(" ");
 }
 
-/** ---------------- Start Here ---------------- */
+/** ---------------- Start Here (shortened, no duplicates) ---------------- */
 const START_HERE_LINKS: StartHereLink[] = [
   {
     href: "/platform",
     title: "Platform overview",
-    desc: "Understand the end-to-end flow: measure → evidence → gates → verify.",
+    desc: "See the end-to-end path: measure → files → gates → optional verification.",
     badge: "FLOW",
   },
   {
     href: "/what-you-get",
-    title: "What you get",
-    desc: "Time, cost, trust, and risk outcomes — grounded in instrumentation.",
-    badge: "VALUE",
-  },
-  {
-    href: "/resources",
-    title: "Review references",
-    desc: "Canonical docs, walkthroughs, and evaluation paths.",
-    badge: "READ",
+    title: "What EcoVeraZ Produces",
+    desc: "Outputs only: evidence packs, manifests, windows, and readiness gates.",
+    badge: "OUT",
   },
   {
     href: "/walkthroughs",
     title: "Proof walkthroughs",
-    desc: "See the reviewer flow with redacted evidence pack examples.",
+    desc: "See what reviewers inspect — step by step (redacted examples).",
     badge: "PROOF",
   },
   {
-    href: "/trust-core",
-    title: "Trust Core",
-    desc: "Boundaries + doctrine. Stable, versioned, regulator-safe.",
-    badge: "CANON",
+    href: "/compliance",
+    title: "Compliance posture",
+    desc: "Boundaries and review-safe positioning (no certification claims).",
+    badge: "SAFE",
   },
   {
-    href: "/rri",
-    title: "RRI (gates)",
-    desc: "Binary review-readiness posture (not scoring).",
-    badge: "SPEC",
+    href: "/resources",
+    title: "Resources",
+    desc: "Definitions, references, and evaluation materials.",
+    badge: "READ",
   },
   {
     href: "/contact#evaluation",
     title: "Request evaluation",
-    desc: "Ask for a walkthrough + an example audit-ready file format.",
+    desc: "Ask for a walkthrough + an example evidence pack format.",
     badge: "NEXT",
   },
 ];
@@ -170,10 +151,9 @@ function StartHereDropdown({ pathname }: { pathname: string }) {
   const anyStartActive =
     isActive(pathname, "/platform") ||
     isActive(pathname, "/what-you-get") ||
-    isActive(pathname, "/resources") ||
     isActive(pathname, "/walkthroughs") ||
-    isActive(pathname, "/trust-core") ||
-    isActive(pathname, "/rri");
+    isActive(pathname, "/resources") ||
+    isActive(pathname, "/compliance");
 
   return (
     <div ref={rootRef} className="relative">
@@ -198,7 +178,7 @@ function StartHereDropdown({ pathname }: { pathname: string }) {
             <div className="px-2 pb-2 pt-1">
               <div className="text-xs text-text-400 evz-mono">GUIDED PATHS</div>
               <div className="mt-1 text-sm text-text-200">
-                Quick routes for evaluators, reviewers, and first-time visitors.
+                Short routes for evaluators, reviewers, and first-time visitors.
               </div>
             </div>
 
@@ -299,40 +279,22 @@ function MobileAccordion({
   );
 }
 
-/** Link sets */
+/** Link sets — reduced to avoid header clutter */
 const HOW_IT_WORKS_LINKS: MegaLink[] = [
   { href: "/platform", title: "Platform overview", desc: "End-to-end evidence pipeline: operations → evidence → verify.", badge: "FLOW" },
-  { href: "/modules", title: "Modules", desc: "Composable capabilities (used as a reference index).", badge: "MOD" },
-  { href: "/ladder", title: "Evidence ladder", desc: "Capture → normalize → lineage → governance → outputs → verify.", badge: "LADDER" },
-  { href: "/evidence-artifacts", title: "Evidence artifacts", desc: "Packs, manifests, checksums, receipts, references.", badge: "ART" },
+  { href: "/what-you-get", title: "What EcoVeraZ Produces", desc: "Outputs and evidence artifacts (practical, non-architectural).", badge: "OUT" },
   { href: "/walkthroughs", title: "Proof walkthroughs", desc: "What reviewers inspect — step by step.", badge: "PROOF" },
   { href: "/rri", title: "RRI (gates)", desc: "Binary review-readiness posture (not scoring).", badge: "SPEC" },
 ];
 
-const OUTCOMES_LINKS: MegaLink[] = [
-  { href: "/solutions/operations", title: "Operations → evidence", desc: "Instrument operations and generate review-ready evidence artifacts.", badge: "OPS" },
-  { href: "/solutions/operations#portfolio", title: "Portfolio oversight", desc: "Compare sites and windows using consistent posture and artifacts.", badge: "PORT" },
-  { href: "/solutions/operations#mrv", title: "MRV enablement", desc: "Stable evidence formats designed for external inspection.", badge: "MRV" },
-  { href: "/solutions/operations#audit", title: "Review-ready reporting", desc: "Structured packs, manifests, and gates for calmer reviews.", badge: "AUDIT" },
-];
-
-const SECTORS_LINKS: MegaLink[] = [
-  { href: "/what-you-get#pharma", title: "Pharma & clean manufacturing", desc: "Quality-sensitive environments: evidence trails + visibility.", badge: "PHARMA" },
-  { href: "/what-you-get#industrial", title: "Industrial facilities & utilities", desc: "Safety visibility + operational efficiency with evidence.", badge: "IND" },
-  { href: "/what-you-get#buildings", title: "Buildings & campuses", desc: "Healthier spaces + efficiency + bounded ESG evidence.", badge: "BLDG" },
-  { href: "/what-you-get#municipal", title: "Municipal programs", desc: "Portfolio oversight across zones and vendors.", badge: "CITY" },
-];
-
 const PROOF_AND_REFERENCES_LINKS: MegaLink[] = [
-  { href: "/resources", title: "Resources hub", desc: "Definitions, doctrine, and review-ready references.", badge: "HUB" },
-  { href: "/trust-core", title: "Trust Core", desc: "Boundaries + doctrine. Stable, versioned, regulator-safe.", badge: "CANON" },
-  { href: "/doctrine", title: "Operating doctrine", desc: "Scope, definitions, responsibilities, and guardrails.", badge: "DOC" },
+  { href: "/resources", title: "Resources hub", desc: "Definitions, boundaries, and review-ready references.", badge: "HUB" },
+  { href: "/trust-core", title: "Trust Core", desc: "Boundaries + definitions. Stable, versioned, regulator-safe.", badge: "CANON" },
   { href: "/compliance", title: "Compliance", desc: "Boundaries, disclaimers, and review-safe positioning.", badge: "SAFE" },
-  { href: "/rri", title: "RRI specification", desc: "Readiness gates: continuity, integrity, lineage, disclosure.", badge: "RRI" },
-  { href: "/walkthroughs", title: "Walkthroughs", desc: "Reviewer flow with inspectable evidence pack formats.", badge: "GUIDE" },
   { href: "/academy", title: "Academy", desc: "Evidence-first ESG learning paths (education only).", badge: "EDU" },
 ];
 
+/** Generic dropdown */
 function MegaDropdown({
   label,
   links,
@@ -443,14 +405,13 @@ export function Header() {
             <Logo />
           </Link>
 
+          {/* Desktop nav: reduced to calm (2 dropdowns + 1 direct) */}
           <nav className="hidden lg:flex items-center gap-2">
             <StartHereDropdown pathname={pathname} />
             <MegaDropdown label="How it works" links={HOW_IT_WORKS_LINKS} pathname={pathname} />
-            <MegaDropdown label="Outcomes" links={OUTCOMES_LINKS} pathname={pathname} />
-            <MegaDropdown label="Sectors" links={SECTORS_LINKS} pathname={pathname} />
 
-            <Link href="/what-you-get" className={navPillClasses(isActive(pathname, "/what-you-get"))}>
-              What you get
+            <Link href="/platform" className={navPillClasses(isActive(pathname, "/platform"))}>
+              Platform
             </Link>
 
             <MegaDropdown label="Proof & references" links={PROOF_AND_REFERENCES_LINKS} pathname={pathname} />
@@ -485,6 +446,7 @@ export function Header() {
           </button>
         </div>
 
+        {/* Mobile nav: same calm reduction */}
         {mobileOpen ? (
           <div className="lg:hidden pb-4">
             <div className="mt-3 grid gap-3">
@@ -518,9 +480,15 @@ export function Header() {
               </div>
 
               <MobileAccordion title="How it works" links={HOW_IT_WORKS_LINKS} pathname={pathname} />
-              <MobileAccordion title="Outcomes" links={OUTCOMES_LINKS} pathname={pathname} />
-              <MobileAccordion title="Sectors" links={SECTORS_LINKS} pathname={pathname} />
               <MobileAccordion title="Proof & references" links={PROOF_AND_REFERENCES_LINKS} pathname={pathname} />
+
+              <Link
+                href="/platform"
+                onClick={() => setMobileOpen(false)}
+                className={navPillClasses(isActive(pathname, "/platform"))}
+              >
+                Platform
+              </Link>
 
               {showInvestor ? (
                 <Link

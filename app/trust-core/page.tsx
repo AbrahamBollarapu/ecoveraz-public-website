@@ -160,10 +160,10 @@ export default function TrustCorePage() {
       <Section title="Canonical artifacts">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <CoreLink
-            href="/doctrine"
-            title="Operating Doctrine"
+            href="/compliance"
+            title="Operating principles"
             desc="Definitions of evidence, review-ready posture, and explicit non-claims."
-            badge="Doctrine"
+            badge="Principles"
           />
           <CoreLink
             href="/ladder"

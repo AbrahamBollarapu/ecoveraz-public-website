@@ -16,6 +16,7 @@ function Bullet({ children }: { children: React.ReactNode }) {
 export default function WalkthroughsPage() {
   return (
     <main className="bg-bg-900 text-text-100">
+      {/* HERO */}
       <Section className="bg-bg-900">
         <div className="flex flex-col gap-6">
           <div className="flex flex-wrap items-center gap-2">
@@ -26,22 +27,23 @@ export default function WalkthroughsPage() {
 
           <div className="max-w-3xl">
             <div className="text-sm text-text-300">Walkthroughs</div>
+
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-text-100">
               Proof walkthroughs for evidence-first review
             </h1>
+
             <p className="mt-3 text-base leading-relaxed text-text-200">
-              Walkthroughs demonstrate the inspection path a reviewer follows:
-              what to look at, how it ties together, and what evidence artifacts
-              are produced. EcoVeraZ does not claim certification or audit approval.
-              External determination remains external.
+              Walkthroughs show the inspection path a reviewer follows — what to
+              look at, how artifacts connect, and how evidence is packaged for
+              review. External determination remains external.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
-              <LinkButton href="/modules" variant="primary">
-                View modules
+              <LinkButton href="/what-you-get" variant="primary">
+                What EcoVeraZ produces
               </LinkButton>
               <LinkButton href="/resources" variant="secondary">
-                Review references
+                Evaluation resources
               </LinkButton>
               <LinkButton href="/contact" variant="secondary">
                 Request a demo
@@ -51,6 +53,7 @@ export default function WalkthroughsPage() {
         </div>
       </Section>
 
+      {/* WHAT REVIEWERS SEE */}
       <Section className="bg-surface-2">
         <div className="grid gap-6 md:grid-cols-2">
           <Card className="rounded-2xl border border-border bg-card/40">
@@ -60,10 +63,10 @@ export default function WalkthroughsPage() {
             />
             <div className="px-5 pb-5 text-sm text-text-200">
               <ul className="space-y-2">
-                <Bullet>Declared time window + scope</Bullet>
+                <Bullet>Declared time window and scope</Bullet>
                 <Bullet>Signals and summaries with traceable context</Bullet>
-                <Bullet>Evidence artifacts (packs / references) for review</Bullet>
-                <Bullet>RRI gates (readiness posture), where applicable</Bullet>
+                <Bullet>Evidence artifacts (packs, manifests, references)</Bullet>
+                <Bullet>Readiness gates (posture only, where applicable)</Bullet>
               </ul>
             </div>
           </Card>

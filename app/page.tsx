@@ -1,4 +1,4 @@
-﻿﻿// app/page.tsx
+﻿﻿﻿// app/page.tsx
 import { Section, Grid } from "@/components/layout/Section";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { MetricTile } from "@/components/ui/MetricTile";
@@ -197,24 +197,17 @@ function FlowStep({
 function StartHereCard({
   title,
   subtitle,
-  bullets,
   ctaHref,
   ctaLabel,
 }: {
   title: string;
   subtitle: string;
-  bullets: string[];
   ctaHref: string;
   ctaLabel: string;
 }) {
   return (
     <Card>
       <CardHeader title={title} subtitle={subtitle} right={<StatusBadge tone="neutral" mono>START</StatusBadge>} />
-      <ul className="mt-2 list-disc pl-5 text-sm text-text-300 space-y-1">
-        {bullets.map((b) => (
-          <li key={b}>{b}</li>
-        ))}
-      </ul>
       <div className="mt-4">
         <LinkButton href={ctaHref} variant="secondary">
           {ctaLabel}
@@ -270,26 +263,6 @@ export default function HomePage() {
               Built for traceability and repeatability — so reviews don’t depend on manual reconstruction.
             </div>
 
-            {/* INSERTION POINT A — 30-second summary */}
-            <div className="mt-4 rounded-xl border border-border bg-surface-2 p-4">
-              <div className="text-xs text-text-300 evz-mono">30-SECOND SUMMARY</div>
-              <div className="mt-2 text-sm text-text-300 leading-relaxed">
-                <span className="text-text-200 font-medium">You measure.</span> EcoVeraZ preserves the data, packages
-                inspection-ready files, and applies readiness gates — so reviewers can trace numbers to sources without
-                last-minute scrambling.
-              </div>
-              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <MetricTile label="What you get" value="Audit-ready files" note="organized for inspection" mono />
-                <MetricTile label="What it avoids" value="Manual compilation" note="less spreadsheet chasing" mono />
-                <MetricTile
-                  label="How it stays safe"
-                  value="Clear boundaries"
-                  note="no certification / no outcomes"
-                  mono
-                />
-              </div>
-            </div>
-
             <p className="mt-4 text-sm text-text-300">
               Example: a building’s energy use, office air quality, or equipment activity — captured over time,
               packaged month-by-month, and ready when a reviewer asks “show me the trail.”
@@ -308,24 +281,12 @@ export default function HomePage() {
               <LinkButton href="/what-you-get" variant="secondary">
                 What you get
               </LinkButton>
-
-              <LinkButton href="/resources" variant="secondary">
-                Review references
-              </LinkButton>
-
-              <LinkButton href="/contact#evaluation" variant="secondary">
-                Request evaluation
-              </LinkButton>
             </div>
           </div>
 
-          <div className="md:col-span-5 md:pt-2">
-            <div className="grid grid-cols-1 gap-3">
-              <MetricTile label="Operational coverage" value="98.7%" note="illustrative site availability" />
-              <MetricTile label="Measurement continuity" value="OK" note="illustrative continuity check" mono />
-              <MetricTile label="Evidence readiness" value="READY" note="illustrative outputs available" mono />
-            </div>
-          </div>
+          {/* Right column intentionally left empty to keep the hero calm and uncluttered.
+              We surface any illustrative metrics later in the journey (Platform / Trust Core). */}
+          <div className="md:col-span-5 md:pt-2" />
         </Grid>
       </Section>
 
@@ -343,58 +304,67 @@ export default function HomePage() {
         </Grid>
       </Section>
 
-      {/* Start here */}
-      <Section
-        title="Start here"
-        subtitle="Pick the path that matches your role. Each path is short, specific, and review-safe."
-        size="sm"
-      >
+      {/* Start here (directional, calm) */}
+      <Section title="Start here" subtitle="Choose a path. Each one is short, specific, and review-safe." size="sm">
         <Grid>
-          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="md:col-span-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             <StartHereCard
-              title="Operations / EHS"
-              subtitle="Make day-to-day conditions review-ready — without extra reporting work."
-              bullets={[
-                "Measure operational reality continuously",
-                "Reduce manual compilation before audits",
-                "Surface high-signal readiness indicators",
-              ]}
+              title="New to EcoVeraZ"
+              subtitle="Understand what the system does and where it fits."
               ctaHref="/platform"
-              ctaLabel="See Platform flow"
+              ctaLabel="Platform overview"
             />
             <StartHereCard
-              title="ESG / Sustainability / Finance"
-              subtitle="Move from narrative reporting to evidence that holds up under questions."
-              bullets={[
-                "Use clear month / window boundaries",
-                "Package files for inspection and follow-ups",
-                "Reduce review friction and back-and-forth",
-              ]}
-              ctaHref="/resources"
-              ctaLabel="See review references"
+              title="Preparing for audits or reviews"
+              subtitle="See how evidence is structured for inspection."
+              ctaHref="/compliance"
+              ctaLabel="Compliance posture"
             />
             <StartHereCard
-              title="Compliance / Audit"
-              subtitle="Inspect quickly: see what’s included, where it came from, and what changed."
-              bullets={[
-                "Trust Core defines boundaries (no certification)",
-                "RRI gates keep evidence review-ready",
-                "Verification supports independent checks",
-              ]}
-              ctaHref="/trust-core"
-              ctaLabel="Open Trust Core"
+              title="Evaluating outputs"
+              subtitle="Review what EcoVeraZ actually produces."
+              ctaHref="/what-you-get"
+              ctaLabel="What you get"
             />
-            <StartHereCard
-              title="Investors / Boards"
-              subtitle="Understand defensibility and oversight signals — without the operational noise."
-              bullets={[
-                "Evidence posture, not outcome claims",
-                "Repeatable review flows across sites",
-                "Versioned doctrine to prevent drift",
-              ]}
-              ctaHref="/platform"
-              ctaLabel="Platform + governance view"
-            />
+          </div>
+        </Grid>
+      </Section>
+
+      {/* Why this matters (compressed, calm) */}
+      <Section size="sm" compact>
+        <Grid>
+          <div className="md:col-span-12">
+            <Card className="bg-surface-2 border-border">
+              <div className="text-xs text-text-300 evz-mono">WHY THIS MATTERS</div>
+
+              <div className="mt-2 text-base font-semibold text-text-100">
+                Most ESG breakdowns come from missing trails — not bad intent.
+              </div>
+
+              <div className="mt-2 text-sm text-text-300 leading-relaxed">
+                Reviews slow down when teams must reconstruct “where the number came from.” EcoVeraZ prevents that by
+                packaging time-bounded evidence with a consistent, inspectable trail.
+              </div>
+
+              <div className="mt-3 grid grid-cols-1 gap-2 md:grid-cols-3">
+                <div className="rounded-xl border border-border bg-surface-1 p-3">
+                  <div className="text-sm font-semibold text-text-100">Audit pressure</div>
+                  <div className="mt-1 text-sm text-text-300">Traceable source data — not summaries.</div>
+                </div>
+                <div className="rounded-xl border border-border bg-surface-1 p-3">
+                  <div className="text-sm font-semibold text-text-100">Review efficiency</div>
+                  <div className="mt-1 text-sm text-text-300">Less back-and-forth during inspection.</div>
+                </div>
+                <div className="rounded-xl border border-border bg-surface-1 p-3">
+                  <div className="text-sm font-semibold text-text-100">Governance posture</div>
+                  <div className="mt-1 text-sm text-text-300">Clear windows and readiness gates.</div>
+                </div>
+              </div>
+
+              <div className="mt-3 text-xs text-text-400">
+                Reminder: EcoVeraZ provides evidence infrastructure. Independent reviewers make all determinations.
+              </div>
+            </Card>
           </div>
         </Grid>
       </Section>
@@ -424,41 +394,6 @@ export default function HomePage() {
                 <div className="mt-3 text-sm text-white/80">
                   Dashboards inform. Reports communicate.{" "}
                   <span className="font-medium text-white">Evidence defends claims.</span>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </Grid>
-      </Section>
-
-      {/* Why this matters */}
-      <Section size="sm" compact>
-        <Grid>
-          <div className="md:col-span-12">
-            <Card className="bg-surface-2 border-border">
-              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                <div className="max-w-3xl">
-                  <div className="text-xs text-text-300 evz-mono">WHY THIS MATTERS</div>
-
-                  <div className="mt-2 text-base font-semibold text-text-100">
-                    Most ESG breakdowns come from missing trails — not bad intent.
-                  </div>
-
-                  <div className="mt-2 text-sm text-text-300 leading-relaxed">
-                    When a reviewer asks, “Where did this number come from?”, teams often chase spreadsheets, emails,
-                    and screenshots. EcoVeraZ is designed to prevent that: it keeps measurements traceable, packages
-                    evidence consistently, and makes the review path repeatable.
-                  </div>
-
-                  <div className="mt-3 text-xs text-text-400">
-                    Reminder: EcoVeraZ provides evidence infrastructure. Independent reviewers make all determinations.
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 gap-3 md:w-[360px]">
-                  <MetricTile label="Review friction" value="REDUCED" note="clear structure + traceability" mono />
-                  <MetricTile label="Reconstruction risk" value="LOWER" note="less manual compilation" mono />
-                  <MetricTile label="Governance posture" value="CONTROLLED" note="windows + gates" mono />
                 </div>
               </div>
             </Card>

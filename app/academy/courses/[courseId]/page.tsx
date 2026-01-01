@@ -55,8 +55,8 @@ export default function CourseDetailPage({
 
             <div className="mt-4 text-xs text-text-400">
               Reference:{" "}
-              <Link href="/doctrine" className="underline underline-offset-4">
-                Operating Doctrine
+              <Link href="/compliance" className="underline underline-offset-4">
+                Operating principles
               </Link>{" "}
               ·{" "}
               <Link href="/rri" className="underline underline-offset-4">

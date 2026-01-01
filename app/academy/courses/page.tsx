@@ -167,8 +167,8 @@ export default function CoursesPage() {
 
             <div className="mt-4 text-xs text-text-400">
               Canonical references:{" "}
-              <Link href="/doctrine" className="text-text-200 underline underline-offset-4">
-                Doctrine
+              <Link href="/compliance" className="text-text-200 underline underline-offset-4">
+                Operating principles
               </Link>
               {" · "}
               <Link href="/rri" className="text-text-200 underline underline-offset-4">

@@ -7,15 +7,11 @@ import { Divider } from "../ui/Divider";
 const DISCLAIMERS = [
   "Evidence ≠ outcomes",
   "Alignment ≠ certification",
-  "Visuals may be illustrative",
-  "Capabilities vary by deployment",
   "Verification ≠ regulatory approval",
 ];
 
 const TRUST_CORE_LINKS = [
   { href: "/trust-core", label: "Trust Core" },
-  { href: "/doctrine", label: "Operating Doctrine" },
-  { href: "/ladder", label: "Evidence Ladder" },
   { href: "/rri", label: "RRI Specification" },
   { href: "/evidence-artifacts", label: "Evidence Artifacts" },
   { href: "/walkthroughs", label: "Walkthroughs" },
@@ -23,10 +19,9 @@ const TRUST_CORE_LINKS = [
 
 const EXPLORE_LINKS = [
   { href: "/platform", label: "Platform" },
-  { href: "/modules", label: "Modules" },
-  { href: "/solutions", label: "Solutions" },
+  { href: "/what-you-get", label: "What EcoVeraZ Produces" },
+  { href: "/compliance", label: "Compliance posture" },
   { href: "/resources", label: "Resources" },
-  { href: "/academy", label: "Academy" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -39,16 +34,25 @@ export function Footer() {
             {/* Disclosures */}
             <div>
               <div className="text-sm font-semibold text-text-200">Disclosures</div>
-              <div className="mt-3 grid grid-cols-1 gap-2">
+
+              <div className="mt-3 flex flex-wrap gap-2">
                 {DISCLAIMERS.map((d) => (
-                  <div key={d} className="text-sm text-text-300">
+                  <span
+                    key={d}
+                    className="rounded-full border border-border bg-surface-2 px-3 py-1 text-xs text-text-300"
+                  >
                     {d}
-                  </div>
+                  </span>
                 ))}
               </div>
+
               <div className="mt-4 text-xs text-text-400 leading-relaxed">
-                EcoVeraZ provides evidence infrastructure for external review. It does not certify,
-                approve, score, or determine compliance outcomes.
+                EcoVeraZ provides evidence infrastructure for external review. It does not certify, approve, score, or
+                determine compliance outcomes.
+              </div>
+
+              <div className="mt-3 text-xs text-text-400 leading-relaxed">
+                If examples or visuals are shown, they are illustrative unless explicitly stated otherwise.
               </div>
             </div>
 
@@ -66,6 +70,7 @@ export function Footer() {
                   </Link>
                 ))}
               </div>
+
               <div className="mt-3 text-xs text-text-400">
                 Canonical definitions and boundaries for evidence posture.
               </div>
@@ -85,8 +90,10 @@ export function Footer() {
                   </Link>
                 ))}
               </div>
+
               <div className="mt-3 text-xs text-text-400">
-                Education is available via Academy. Certificates (if offered) are proof of learning — not regulatory accreditation.
+                For learning content, use Academy (education only). For evaluation, start with Platform → Outputs →
+                Walkthroughs.
               </div>
             </div>
           </div>
@@ -96,9 +103,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <div className="text-sm text-text-400">
-              © {new Date().getFullYear()} EcoVeraZ. All rights reserved.
-            </div>
+            <div className="text-sm text-text-400">© {new Date().getFullYear()} EcoVeraZ. All rights reserved.</div>
             <div className="text-sm text-text-400">Operational evidence infrastructure.</div>
           </div>
         </div>
